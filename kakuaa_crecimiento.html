@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kakuaa - Crecimiento y Desarrollo</title>
+  <meta name="description" content="Kakuaa es una palabra en Guaraní que significa Crecimiento y Desarrollo. Descubre nuestra plataforma dedicada a impulsar el crecimiento personal y profesional.">
+  <meta name="keywords" content="Kakuaa, Guaraní, crecimiento, desarrollo, aprendizaje, educación, Paraguay">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kakuaa.me/kakuaa_crecimiento.html">
+  <meta property="og:title" content="Kakuaa - Crecimiento y Desarrollo">
+  <meta property="og:description" content="Kakuaa es una palabra en Guaraní que significa Crecimiento y Desarrollo. Descubre nuestra plataforma dedicada a impulsar el crecimiento personal y profesional.">
+  <meta property="og:image" content="https://kakuaa.me/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://kakuaa.me/kakuaa_crecimiento.html">
+  <meta name="twitter:title" content="Kakuaa - Crecimiento y Desarrollo">
+  <meta name="twitter:description" content="Kakuaa es una palabra en Guaraní que significa Crecimiento y Desarrollo. Descubre nuestra plataforma dedicada a impulsar el crecimiento personal y profesional.">
+  <meta name="twitter:image" content="https://kakuaa.me/assets/og-image.png">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background-color: #1a1a2e;
+      color: #fff;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    header .logo span {
+      color: #e94560;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #e94560;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 32px;
+    }
+
+    .hero .guarani-badge {
+      display: inline-block;
+      background-color: #e94560;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero h2 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #a8b2d8;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      color: #ccd6f6;
+    }
+
+    .hero .cta-button {
+      display: inline-block;
+      background-color: #e94560;
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .hero .cta-button:hover {
+      background-color: #c73652;
+      transform: translateY(-2px);
+    }
+
+    /* Features */
+    .features {
+      padding: 64px 32px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    .features h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+
+    .features .subtitle {
+      color: #666;
+      margin-bottom: 48px;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 32px 24px;
+      width: 280px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-card img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+      object-fit: contain;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #1a1a2e;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* About */
+    .about {
+      padding: 64px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about img {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: #555;
+      max-width: 480px;
+      margin-bottom: 12px;
+    }
+
+    .about-text .guarani-note {
+      font-style: italic;
+      color: #e94560;
+      font-weight: 600;
+    }
+
+    /* Team */
+    .team {
+      padding: 64px 32px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    .team h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+
+    .team .subtitle {
+      color: #666;
+      margin-bottom: 48px;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .team-member {
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #e94560;
+      margin-bottom: 12px;
+    }
+
+    .team-member h3 {
+      font-size: 1rem;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .team-member p {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a2e;
+      color: #a8b2d8;
+      padding: 48px 32px 24px;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto 32px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      color: #a8b2d8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #e94560;
+    }
+
+    .footer-col p {
+      font-size: 0.9rem;
+      max-width: 240px;
+      line-height: 1.7;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2a2a4e;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin-left: 12px;
+      }
+
+      .about {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">K<span>akuaa</span></div>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Nosotros</a>
+      <a href="#">Servicios</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="guarani-badge">Palabra Guaraní</span>
+    <h1>Kakuaa</h1>
+    <h2>Crecimiento y Desarrollo</h2>
+    <p>
+      <strong>Kakuaa</strong> proviene del idioma Guaraní y significa <em>Crecimiento y Desarrollo</em>.
+      Somos una plataforma dedicada a impulsar el crecimiento personal y profesional de las personas.
+    </p>
+    <a href="#" class="cta-button">Comenzar ahora</a>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2>¿Qué ofrecemos?</h2>
+    <p class="subtitle">Herramientas y recursos para tu crecimiento continuo</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="assets/icon-aprendizaje.svg" alt="Ícono de aprendizaje continuo">
+        <h3>Aprendizaje Continuo</h3>
+        <p>Accede a cursos, talleres y recursos diseñados para potenciar tus habilidades.</p>
+      </div>
+      <div class="feature-card">
+        <img src="assets/icon-mentoria.svg" alt="Ícono de mentoría personalizada">
+        <h3>Mentoría Personalizada</h3>
+        <p>Conecta con mentores experimentados que guiarán tu camino de crecimiento.</p>
+      </div>
+      <div class="feature-card">
+        <img src="assets/icon-comunidad.svg" alt="Ícono de comunidad colaborativa">
+        <h3>Comunidad Colaborativa</h3>
+        <p>Únete a una comunidad de personas comprometidas con su desarrollo personal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="nosotros">
+    <img src="assets/about-kakuaa.jpg" alt="Equipo de Kakuaa trabajando juntos en el crecimiento y desarrollo">
+    <div class="about-text">
+      <h2>Nuestra Historia</h2>
+      <p>
+        Nació con la misión de llevar el concepto guaraní de <strong>Kakuaa</strong> —
+        <span class="guarani-note">"Crecimiento y Desarrollo"</span> — a cada persona
+        que busca superarse.
+      </p>
+      <p>
+        Desde Paraguay para el mundo, construimos puentes entre el conocimiento
+        ancestral y las herramientas modernas de aprendizaje.
+      </p>
+      <p>
+        Creemos que el verdadero crecimiento combina raíces culturales con visión de futuro.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team">
+    <h2>Nuestro Equipo</h2>
+    <p class="subtitle">Personas apasionadas por el crecimiento y el desarrollo</p>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="assets/team-member-1.jpg" alt="Foto de perfil del fundador de Kakuaa">
+        <h3>Fundador</h3>
+        <p>Visión &amp; Estrategia</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/team-member-2.jpg" alt="Foto de perfil del responsable de tecnología">
+        <h3>Tecnología</h3>
+        <p>Desarrollo &amp; Innovación</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/team-member-3.jpg" alt="Foto de perfil de la responsable de comunidad">
+        <h3>Comunidad</h3>
+        <p>Crecimiento &amp; Conexión</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Kakuaa</h4>
+        <p>
+          <em>Kakuaa</em> — palabra Guaraní que significa
+          <strong>Crecimiento y Desarrollo</strong>.
+          Impulsando personas desde Paraguay para el mundo.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="#">Cursos</a></li>
+          <li><a href="#">Mentoría</a></li>
+          <li><a href="#">Comunidad</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Equipo</a></li>
+          <li><a href="#">Carreras</a></li>
+          <li><a href="#">Prensa</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos de uso</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Kakuaa. Todos los derechos reservados. &mdash; <em>Kakuaa</em>: Crecimiento y Desarrollo en Guaraní.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
