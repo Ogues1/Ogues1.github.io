@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kakuaa Crecimiento — Plataforma de análisis e inteligencia de negocios para impulsar el crecimiento de tu empresa.">
+  <title>Kakuaa Crecimiento — Inteligencia de Negocios</title>
+
+  <!-- Chart.js (ligero, sin dependencias grandes) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+          crossorigin="anonymous"></script>
+
+  <style>
+    /* =========================================================
+       VARIABLES & RESET
+    ========================================================= */
+    :root {
+      --green-dark:   #1a5c3a;
+      --green-mid:    #2e8b57;
+      --green-light:  #4db87a;
+      --green-pale:   #e8f5ee;
+      --teal:         #00a896;
+      --teal-light:   #00c9b1;
+      --orange:       #f4a261;
+      --orange-dark:  #e76f51;
+      --white:        #ffffff;
+      --gray-50:      #f9fafb;
+      --gray-100:     #f3f4f6;
+      --gray-200:     #e5e7eb;
+      --gray-600:     #4b5563;
+      --gray-800:     #1f2937;
+      --text:         #111827;
+      --radius-sm:    6px;
+      --radius-md:    12px;
+      --radius-lg:    20px;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,.10), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md:    0 4px 16px rgba(0,0,0,.10);
+      --shadow-lg:    0 20px 60px rgba(0,0,0,.15);
+      --transition:   .25s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img, video, svg { max-width: 100%; height: auto; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* =========================================================
+       SKIP LINK (accesibilidad)
+    ========================================================= */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--green-dark);
+      color: var(--white);
+      padding: .5rem 1rem;
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      z-index: 9999;
+      transition: top var(--transition);
+    }
+    .skip-link:focus { top: 0; }
+
+    /* =========================================================
+       HEADER — patrón F: nav izquierda · botones CTA derecha
+    ========================================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    /* ── Logo ── */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--green-dark);
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--green-mid), var(--teal));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg { width: 22px; height: 22px; }
+
+    /* ── Primary Navigation ── */
+    .primary-nav { display: flex; align-items: center; gap: .25rem; }
+
+    .primary-nav a {
+      padding: .45rem .85rem;
+      border-radius: var(--radius-sm);
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .primary-nav a:hover,
+    .primary-nav a[aria-current="page"] {
+      color: var(--green-dark);
+      background: var(--green-pale);
+    }
+
+    /* ── CTA Buttons (far right — punto focal del patrón F) ── */
+    .header-cta { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .55rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      border: none;
+      line-height: 1;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--green-mid);
+      outline-offset: 2px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--green-mid);
+      color: var(--green-mid);
+    }
+
+    .btn-outline:hover {
+      background: var(--green-pale);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-mid), var(--teal));
+      color: var(--white);
+      box-shadow: 0 2px 8px rgba(46,139,87,.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46,139,87,.4);
+    }
+
+    /* Hamburger (mobile) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .4rem;
+      color: var(--gray-600);
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, var(--green-dark) 0%, var(--green-mid) 55%, var(--teal) 100%);
+      color: var(--white);
+      padding: 6rem 1.5rem 5rem;
+      text-align: center;
+    }
+
+    /* Organic background pattern */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(255,255,255,.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 70%, rgba(0,201,177,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Floating shapes (decorative) */
+    .hero-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: .08;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .shape-1 { width: 300px; height: 300px; background: var(--teal-light); top: -80px; left: -60px; animation-delay: 0s; }
+    .shape-2 { width: 200px; height: 200px; background: var(--white); bottom: -40px; right: 10%; animation-delay: -3s; }
+    .shape-3 { width: 150px; height: 150px; background: var(--orange); top: 30%; left: 75%; animation-delay: -5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%       { transform: translate(12px, -16px) scale(1.03); }
+      66%       { transform: translate(-8px, 10px) scale(.97); }
+    }
+
+    .hero-content { position: relative; max-width: 760px; margin: 0 auto; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: .35rem .9rem;
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -.02em;
+    }
+
+    .hero h1 span { color: var(--teal-light); }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      opacity: .9;
+      max-width: 580px;
+      margin: 0 auto 2.25rem;
+    }
+
+    .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-hero {
+      padding: .85rem 2rem;
+      font-size: 1rem;
+      border-radius: var(--radius-md);
+    }
+
+    .btn-hero-white {
+      background: var(--white);
+      color: var(--green-dark);
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    }
+
+    .btn-hero-white:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,.25); }
+
+    .btn-hero-ghost {
+      background: rgba(255,255,255,.12);
+      border: 1.5px solid rgba(255,255,255,.4);
+      color: var(--white);
+    }
+
+    .btn-hero-ghost:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+    /* =========================================================
+       METRICS STRIP
+    ========================================================= */
+    .metrics-strip {
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 2rem 1.5rem;
+    }
+
+    .metrics-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .metric-card {
+      text-align: center;
+      padding: 1.25rem;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      /* 3D card effect */
+      transform-style: preserve-3d;
+      perspective: 600px;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-4px) rotateX(2deg);
+      box-shadow: var(--shadow-md);
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--green-mid);
+      display: block;
+      line-height: 1;
+    }
+
+    .metric-label {
+      font-size: .8rem;
+      color: var(--gray-600);
+      margin-top: .35rem;
+      font-weight: 500;
+    }
+
+    .metric-trend {
+      display: inline-flex;
+      align-items: center;
+      gap: .2rem;
+      font-size: .75rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-top: .25rem;
+    }
+
+    /* =========================================================
+       SECTION BASE
+    ========================================================= */
+    .section { padding: 5rem 1.5rem; }
+    .section-alt { background: var(--gray-50); }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .3rem .8rem;
+      border-radius: 50px;
+      margin-bottom: .85rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      font-weight: 800;
+      color: var(--gray-800);
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin-bottom: .75rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--gray-600);
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* =========================================================
+       INTERACTIVE DASHBOARD
+    ========================================================= */
+    .dashboard-section { background: var(--gray-800); color: var(--white); }
+
+    .dashboard-section .section-tag { background: rgba(77,184,122,.15); color: var(--green-light); }
+    .dashboard-section .section-title { color: var(--white); }
+    .dashboard-section .section-subtitle { color: rgba(255,255,255,.7); }
+
+    .dashboard-frame {
+      background: #0f1923;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 30px 80px rgba(0,0,0,.4);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* Browser chrome */
+    .dash-chrome {
+      background: #1a2332;
+      padding: .85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .chrome-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+
+    .chrome-dot-red    { background: #ff5f57; }
+    .chrome-dot-yellow { background: #febc2e; }
+    .chrome-dot-green  { background: #28c840; }
+
+    .chrome-url {
+      flex: 1;
+      background: rgba(255,255,255,.07);
+      border-radius: var(--radius-sm);
+      padding: .3rem .8rem;
+      font-size: .78rem;
+      color: rgba(255,255,255,.5);
+      margin-left: .5rem;
+      max-width: 360px;
+    }
+
+    .dash-body {
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 700px) {
+      .dash-body { grid-template-columns: 1fr; }
+    }
+
+    .dash-card {
+      background: #1a2332;
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .dash-card-title {
+      font-size: .8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.55);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 1rem;
+    }
+
+    .dash-card canvas { display: block; }
+
+    /* KPI row inside dashboard */
+    .dash-kpi-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: .75rem;
+    }
+
+    .dash-kpi {
+      background: #1a2332;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .dash-kpi-label { font-size: .72rem; color: rgba(255,255,255,.5); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+    .dash-kpi-value { font-size: 1.6rem; font-weight: 800; color: var(--white); line-height: 1.1; margin-top: .3rem; }
+    .dash-kpi-change { font-size: .75rem; margin-top: .2rem; }
+    .positive { color: var(--green-light); }
+    .negative { color: #f87171; }
+
+    /* =========================================================
+       ANIMATED GROWTH BARS
+    ========================================================= */
+    .growth-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 55px;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .bar-label { font-size: .88rem; font-weight: 600; color: var(--gray-800); text-align: right; }
+
+    .bar-track {
+      height: 12px;
+      background: var(--gray-200);
+      border-radius: 50px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 50px;
+      width: 0;
+      transition: width 1.4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .bar-fill-1 { background: linear-gradient(90deg, var(--green-mid), var(--teal)); }
+    .bar-fill-2 { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+    .bar-fill-3 { background: linear-gradient(90deg, var(--orange), var(--orange-dark)); }
+    .bar-fill-4 { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+    .bar-fill-5 { background: linear-gradient(90deg, var(--green-light), var(--teal-light)); }
+
+    .bar-percent { font-size: .9rem; font-weight: 700; color: var(--gray-600); }
+
+    /* =========================================================
+       SERVICES — 3D card effect
+    ========================================================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+      transform-style: preserve-3d;
+      perspective: 800px;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px) rotateX(3deg) rotateY(-2deg);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--green-light);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      transition: transform var(--transition);
+    }
+
+    .service-card:hover .service-icon { transform: scale(1.1) translateZ(10px); }
+
+    .icon-green  { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+    .icon-teal   { background: linear-gradient(135deg, #ccfbf1, #99f6e4); }
+    .icon-orange { background: linear-gradient(135deg, #ffedd5, #fed7aa); }
+    .icon-purple { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+
+    .service-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: .5rem;
+    }
+
+    .service-desc { font-size: .88rem; color: var(--gray-600); line-height: 1.6; }
+
+    /* =========================================================
+       STORAGE GUIDE SECTION
+    ========================================================= */
+    .storage-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      padding: .55rem 1.2rem;
+      border-radius: 50px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background: var(--green-mid);
+      border-color: var(--green-mid);
+      color: var(--white);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .storage-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      max-width: 860px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-md);
+    }
+
+    .storage-card-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .storage-badge {
+      padding: .3rem .85rem;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .badge-gif    { background: #fef9c3; color: #854d0e; }
+    .badge-svg    { background: #d1fae5; color: #065f46; }
+    .badge-embed  { background: #dbeafe; color: #1e40af; }
+    .badge-video  { background: #ede9fe; color: #4c1d95; }
+
+    .storage-card-body { padding: 2rem; }
+
+    .storage-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .meta-item { display: flex; flex-direction: column; gap: .2rem; }
+    .meta-key { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gray-600); }
+    .meta-val { font-size: .9rem; font-weight: 600; color: var(--gray-800); }
+
+    .code-block {
+      background: var(--gray-800);
+      color: #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      font-family: 'Consolas', 'Fira Code', monospace;
+      font-size: .82rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .code-block .tag     { color: #f472b6; }
+    .code-block .attr    { color: #7dd3fc; }
+    .code-block .val     { color: #86efac; }
+    .code-block .comment { color: #64748b; font-style: italic; }
+
+    /* Folder tree */
+    .folder-tree {
+      font-family: 'Consolas', 'Fira Code', monospace;
+      font-size: .85rem;
+      color: var(--gray-800);
+      line-height: 1.9;
+      background: var(--gray-50);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--gray-200);
+    }
+
+    .folder-tree .folder { color: var(--green-mid); font-weight: 700; }
+    .folder-tree .file   { color: var(--gray-600); }
+    .folder-tree .note   { color: var(--teal); font-style: italic; }
+
+    /* =========================================================
+       SVG ICONS — 2D inline illustrations
+    ========================================================= */
+    .icons-showcase {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .icon-demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+      cursor: pointer;
+    }
+
+    .icon-demo-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .icon-demo:hover .icon-demo-wrap {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .icon-demo-label { font-size: .78rem; font-weight: 600; color: var(--gray-600); }
+
+    /* =========================================================
+       CTA SECTION
+    ========================================================= */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green-dark), var(--teal));
+      color: var(--white);
+      text-align: center;
+      padding: 5rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .cta-inner { position: relative; max-width: 680px; margin: 0 auto; }
+
+    .cta-title  { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .cta-subtitle { font-size: 1.05rem; opacity: .85; margin-bottom: 2rem; }
+    .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    .site-footer {
+      background: var(--gray-800);
+      color: rgba(255,255,255,.65);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: .85rem;
+    }
+
+    .site-footer a { color: var(--teal-light); }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 900px) {
+      .primary-nav { display: none; }
+      .primary-nav.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; top: 68px; left: 0; right: 0; background: var(--white); padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); box-shadow: var(--shadow-md); gap: .25rem; }
+      .menu-toggle { display: flex; }
+      .header-inner { position: relative; }
+    }
+
+    @media (max-width: 600px) {
+      .bar-row { grid-template-columns: 100px 1fr 45px; }
+      .bar-label { font-size: .78rem; }
+      .header-cta .btn-outline { display: none; }
+      .dash-kpi-row { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER — F-pattern: logo+nav left · CTA buttons right
+  ═══════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Logo (left anchor of F-scan) -->
+      <a href="/" class="logo" aria-label="Kakuaa — Ir al inicio">
+        <div class="logo-icon" aria-hidden="true">
+          <!-- Leaf + data icon -->
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M11 2C6.5 2 3 6 3 11c0 1.5.4 3 1 4.2L11 20l7-4.8c.6-1.2 1-2.7 1-4.2 0-5-3.5-9-8-9z" fill="white" fill-opacity=".9"/>
+            <path d="M11 6v10M7.5 9.5l3.5 3 3.5-4" stroke="rgba(0,201,177,.8)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Kakuaa
+      </a>
+
+      <!-- Primary Navigation (left side — horizontal scan) -->
+      <nav class="primary-nav" id="primary-nav" role="navigation" aria-label="Navegación principal">
+        <a href="#dashboard"  aria-current="page">Dashboard</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#guia">Cómo usar</a>
+      </nav>
+
+      <!-- CTA Buttons (right — focal endpoint of F-pattern) -->
+      <div class="header-cta" role="group" aria-label="Acciones principales">
+        <a href="#contacto" class="btn btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 12h8M8 8h5M5 20l2-4H4a2 2 0 01-2-2V6a2 2 0 012-2h16a2 2 0 012 2v8a2 2 0 01-2 2H9.5L5 20z"/></svg>
+          Hablar con ventas
+        </a>
+        <a href="#demo" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+          Solicita demo
+        </a>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <button class="menu-toggle" id="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Abrir menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ═══════════════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-shapes" aria-hidden="true">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge" aria-hidden="true">
+          <div class="hero-badge-dot"></div>
+          Plataforma activa · v2.0
+        </div>
+        <h1 id="hero-heading">
+          Inteligencia de Negocios<br>
+          para tu <span>Crecimiento</span>
+        </h1>
+        <p>Transforma tus datos en decisiones estratégicas con dashboards interactivos, análisis en tiempo real y reportes automatizados.</p>
+        <div class="hero-actions">
+          <a href="#demo" class="btn btn-hero btn-hero-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+            Ver demo en vivo
+          </a>
+          <a href="#servicios" class="btn btn-hero btn-hero-ghost">Conocer servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         METRICS STRIP
+    ═══════════════════════════════════════════════════ -->
+    <section class="metrics-strip" aria-label="Métricas clave">
+      <div class="metrics-inner">
+        <div class="metric-card">
+          <span class="metric-value" id="metric-clients" aria-label="340 clientes activos">340+</span>
+          <div class="metric-label">Clientes activos</div>
+          <div class="metric-trend" aria-label="Tendencia positiva">↑ 24% este trimestre</div>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value" id="metric-data" aria-label="12 millones de registros procesados">12M</span>
+          <div class="metric-label">Registros procesados</div>
+          <div class="metric-trend">↑ 38% vs año anterior</div>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value" aria-label="Tiempo de respuesta 0.4 segundos">0.4 s</span>
+          <div class="metric-label">Tiempo de respuesta</div>
+          <div class="metric-trend">↓ 65% de latencia</div>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value" aria-label="99.9% de uptime">99.9%</span>
+          <div class="metric-label">Disponibilidad</div>
+          <div class="metric-trend">SLA garantizado</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         DASHBOARD INTERACTIVO
+    ═══════════════════════════════════════════════════ -->
+    <section class="section dashboard-section" id="dashboard" aria-labelledby="dashboard-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Dashboard en vivo</span>
+          <h2 class="section-title" id="dashboard-heading">Visualiza tu crecimiento en tiempo real</h2>
+          <p class="section-subtitle">Los gráficos se actualizan automáticamente. Reemplázalos con tus propios datos siguiendo la guía de la sección "Cómo usar".</p>
+        </div>
+
+        <div class="dashboard-frame" role="img" aria-label="Dashboard interactivo con gráficos de crecimiento, distribución y tendencias">
+          <!-- Browser chrome -->
+          <div class="dash-chrome" aria-hidden="true">
+            <div class="chrome-dot chrome-dot-red"></div>
+            <div class="chrome-dot chrome-dot-yellow"></div>
+            <div class="chrome-dot chrome-dot-green"></div>
+            <div class="chrome-url">app.kakuaa.me/dashboard</div>
+          </div>
+
+          <div class="dash-body">
+            <!-- KPI Row -->
+            <div class="dash-kpi-row" role="list" aria-label="Indicadores clave">
+              <div class="dash-kpi" role="listitem">
+                <div class="dash-kpi-label">Ingresos</div>
+                <div class="dash-kpi-value">$2.4M</div>
+                <div class="dash-kpi-change positive">↑ 18.3%</div>
+              </div>
+              <div class="dash-kpi" role="listitem">
+                <div class="dash-kpi-label">Nuevos clientes</div>
+                <div class="dash-kpi-value">1,284</div>
+                <div class="dash-kpi-change positive">↑ 9.1%</div>
+              </div>
+              <div class="dash-kpi" role="listitem">
+                <div class="dash-kpi-label">Retención</div>
+                <div class="dash-kpi-value">87%</div>
+                <div class="dash-kpi-change positive">↑ 2.4pp</div>
+              </div>
+              <div class="dash-kpi" role="listitem">
+                <div class="dash-kpi-label">Churn</div>
+                <div class="dash-kpi-value">4.2%</div>
+                <div class="dash-kpi-change negative">↑ 0.3pp</div>
+              </div>
+            </div>
+
+            <!-- Line chart — crecimiento mensual -->
+            <div class="dash-card">
+              <div class="dash-card-title">Crecimiento mensual</div>
+              <canvas id="chartLine" width="460" height="200" aria-label="Gráfico de líneas: crecimiento mensual"></canvas>
+            </div>
+
+            <!-- Bar chart — canales de adquisición -->
+            <div class="dash-card">
+              <div class="dash-card-title">Canales de adquisición</div>
+              <canvas id="chartBar" width="460" height="200" aria-label="Gráfico de barras: canales de adquisición"></canvas>
+            </div>
+
+            <!-- Donut chart — distribución de ingresos -->
+            <div class="dash-card" style="display:flex;flex-direction:column;align-items:center;">
+              <div class="dash-card-title" style="width:100%">Distribución de ingresos</div>
+              <canvas id="chartDonut" width="200" height="200" aria-label="Gráfico de dona: distribución de ingresos"></canvas>
+            </div>
+
+            <!-- Area sparkline — sesiones diarias -->
+            <div class="dash-card">
+              <div class="dash-card-title">Sesiones diarias (últimos 30 días)</div>
+              <canvas id="chartArea" width="460" height="200" aria-label="Gráfico de área: sesiones diarias"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         SERVICIOS — 3D cards
+    ═══════════════════════════════════════════════════ -->
+    <section class="section" id="servicios" aria-labelledby="servicios-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Servicios</span>
+          <h2 class="section-title" id="servicios-heading">Todo lo que necesitas para crecer</h2>
+          <p class="section-subtitle">Soluciones modulares que se adaptan a tu etapa de crecimiento.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card" tabindex="0">
+            <div class="service-icon icon-green" aria-hidden="true">
+              <!-- Plant/growth SVG icon -->
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M14 24V12" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+                <path d="M14 16c-3-3-6-3-8-1 2 3 5 4 8 3" fill="#10b981" fill-opacity=".3" stroke="#059669" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M14 12c3-4 7-4 9-2-2 4-5 5-9 5" fill="#10b981" fill-opacity=".3" stroke="#059669" stroke-width="1.5" stroke-linejoin="round"/>
+                <circle cx="14" cy="24" r="2" fill="#059669" fill-opacity=".4"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Análisis de Crecimiento</h3>
+            <p class="service-desc">Identifica palancas de crecimiento con modelos predictivos y cohort analysis automatizado.</p>
+          </article>
+          <article class="service-card" tabindex="0">
+            <div class="service-icon icon-teal" aria-hidden="true">
+              <!-- Data flow SVG icon -->
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="4" y="8" width="6" height="12" rx="2" fill="#0d9488" fill-opacity=".25" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="11" y="5" width="6" height="15" rx="2" fill="#0d9488" fill-opacity=".45" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="18" y="11" width="6" height="9" rx="2" fill="#0d9488" fill-opacity=".65" stroke="#0d9488" stroke-width="1.5"/>
+                <path d="M4 22h20" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Dashboards en Tiempo Real</h3>
+            <p class="service-desc">Visualiza KPIs críticos con actualizaciones en vivo y alertas configurables por canal.</p>
+          </article>
+          <article class="service-card" tabindex="0">
+            <div class="service-icon icon-orange" aria-hidden="true">
+              <!-- Automation SVG icon -->
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="14" cy="14" r="9" stroke="#ea580c" stroke-width="1.5" fill="#ea580c" fill-opacity=".1"/>
+                <path d="M14 8v4l3 2" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 20l2-2M19 20l-2-2" stroke="#ea580c" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Reportes Automatizados</h3>
+            <p class="service-desc">Genera reportes ejecutivos, operativos y de marketing de forma automática y puntual.</p>
+          </article>
+          <article class="service-card" tabindex="0">
+            <div class="service-icon icon-purple" aria-hidden="true">
+              <!-- AI/ML SVG icon -->
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="14" cy="14" r="4" fill="#7c3aed" fill-opacity=".25" stroke="#7c3aed" stroke-width="1.5"/>
+                <circle cx="6"  cy="8"  r="2.5" stroke="#7c3aed" stroke-width="1.5"/>
+                <circle cx="22" cy="8"  r="2.5" stroke="#7c3aed" stroke-width="1.5"/>
+                <circle cx="6"  cy="20" r="2.5" stroke="#7c3aed" stroke-width="1.5"/>
+                <circle cx="22" cy="20" r="2.5" stroke="#7c3aed" stroke-width="1.5"/>
+                <path d="M8.5 9.5L11.5 12M16.5 16l3 2.5M19.5 9.5L16.5 12M8.5 18.5L11.5 16" stroke="#7c3aed" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Inteligencia Artificial</h3>
+            <p class="service-desc">Modelos ML para predicción de churn, forecast de ingresos y segmentación de clientes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         GROWTH BARS (animated)
+    ═══════════════════════════════════════════════════ -->
+    <section class="section section-alt" id="resultados" aria-labelledby="resultados-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Resultados</span>
+          <h2 class="section-title" id="resultados-heading">Impacto demostrado en números</h2>
+          <p class="section-subtitle">Métricas promedio obtenidas por nuestros clientes en el primer año.</p>
+        </div>
+        <div class="growth-bars" role="list" aria-label="Indicadores de impacto">
+          <div class="bar-row" role="listitem">
+            <div class="bar-label">Reducción de costos</div>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill bar-fill-1" data-target="78" style="width:0%"></div></div>
+            <div class="bar-percent" aria-label="78 por ciento">78%</div>
+          </div>
+          <div class="bar-row" role="listitem">
+            <div class="bar-label">Velocidad de reporte</div>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill bar-fill-2" data-target="91" style="width:0%"></div></div>
+            <div class="bar-percent" aria-label="91 por ciento">91%</div>
+          </div>
+          <div class="bar-row" role="listitem">
+            <div class="bar-label">Retención clientes</div>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill bar-fill-3" data-target="65" style="width:0%"></div></div>
+            <div class="bar-percent" aria-label="65 por ciento">65%</div>
+          </div>
+          <div class="bar-row" role="listitem">
+            <div class="bar-label">ROI promedio</div>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill bar-fill-4" data-target="84" style="width:0%"></div></div>
+            <div class="bar-percent" aria-label="84 por ciento">84%</div>
+          </div>
+          <div class="bar-row" role="listitem">
+            <div class="bar-label">Satisfacción NPS</div>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill bar-fill-5" data-target="72" style="width:0%"></div></div>
+            <div class="bar-percent" aria-label="72 por ciento">72%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         2D SVG ICONS SHOWCASE
+    ═══════════════════════════════════════════════════ -->
+    <section class="section" aria-labelledby="icons-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Iconografía 2D</span>
+          <h2 class="section-title" id="icons-heading">Naturaleza + Tecnología</h2>
+          <p class="section-subtitle">Iconos SVG personalizados que representan la identidad de Kakuaa: crecimiento orgánico impulsado por datos.</p>
+        </div>
+        <div class="icons-showcase" role="list" aria-label="Galería de iconos">
+
+          <div class="icon-demo" role="listitem">
+            <div class="icon-demo-wrap">
+              <!-- Árbol de datos -->
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="12" r="8" fill="#2e8b57" fill-opacity=".15" stroke="#2e8b57" stroke-width="1.5"/>
+                <circle cx="22" cy="12" r="4" fill="#2e8b57" fill-opacity=".5"/>
+                <path d="M22 20v14" stroke="#2e8b57" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 30h12" stroke="#2e8b57" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M22 26l-5 4M22 26l5 4" stroke="#2e8b57" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="10" cy="36" r="2" fill="#2e8b57" fill-opacity=".4"/>
+                <circle cx="22" cy="36" r="2" fill="#2e8b57" fill-opacity=".4"/>
+                <circle cx="34" cy="36" r="2" fill="#2e8b57" fill-opacity=".4"/>
+              </svg>
+            </div>
+            <span class="icon-demo-label">Red de datos</span>
+          </div>
+
+          <div class="icon-demo" role="listitem">
+            <div class="icon-demo-wrap">
+              <!-- Célula / circuito -->
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="22" r="10" stroke="#00a896" stroke-width="1.5" stroke-dasharray="4 2"/>
+                <circle cx="22" cy="22" r="5"  fill="#00a896" fill-opacity=".2" stroke="#00a896" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="2"  fill="#00a896"/>
+                <circle cx="12" cy="14" r="2"  fill="#00a896" fill-opacity=".5"/>
+                <circle cx="32" cy="14" r="2"  fill="#00a896" fill-opacity=".5"/>
+                <circle cx="12" cy="30" r="2"  fill="#00a896" fill-opacity=".5"/>
+                <circle cx="32" cy="30" r="2"  fill="#00a896" fill-opacity=".5"/>
+                <path d="M14 16l5.5 4M24.5 24l5.5 4M30 16l-5.5 4M13.5 28l5.5-4" stroke="#00a896" stroke-width="1" stroke-opacity=".7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="icon-demo-label">Célula / circuito</span>
+          </div>
+
+          <div class="icon-demo" role="listitem">
+            <div class="icon-demo-wrap">
+              <!-- Planta creciendo -->
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M22 38V22" stroke="#2e8b57" stroke-width="2" stroke-linecap="round"/>
+                <path d="M22 28c-4-4-8-4-10-2 2 5 6 6 10 5" fill="#4db87a" fill-opacity=".25" stroke="#2e8b57" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M22 22c4-5 9-5 11-2-2 5-6 6-11 5" fill="#4db87a" fill-opacity=".25" stroke="#2e8b57" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M22 18c0-4 2-7 5-8-1 4-2 7-5 9" fill="#4db87a" fill-opacity=".15" stroke="#2e8b57" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M16 38h12" stroke="#2e8b57" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="icon-demo-label">Crecimiento</span>
+          </div>
+
+          <div class="icon-demo" role="listitem">
+            <div class="icon-demo-wrap">
+              <!-- Flujo de datos -->
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 22c0-7 5-12 12-12s12 5 12 12" stroke="#f4a261" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+                <path d="M8 22c0 7 5 12 12 12" stroke="#f4a261" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="20" cy="10" r="3" fill="#f4a261" fill-opacity=".3" stroke="#f4a261" stroke-width="1.5"/>
+                <circle cx="32" cy="22" r="3" fill="#f4a261" fill-opacity=".3" stroke="#f4a261" stroke-width="1.5"/>
+                <circle cx="20" cy="34" r="3" fill="#f4a261" fill-opacity=".6" stroke="#f4a261" stroke-width="1.5"/>
+                <circle cx="8"  cy="22" r="3" fill="#f4a261" fill-opacity=".3" stroke="#f4a261" stroke-width="1.5"/>
+                <path d="M22 22l6-4" stroke="#f4a261" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="icon-demo-label">Flujo circular</span>
+          </div>
+
+          <div class="icon-demo" role="listitem">
+            <div class="icon-demo-wrap">
+              <!-- Tendencia ascendente -->
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 34l8-10 7 4 9-12 8-6" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="14" cy="24" r="2.5" fill="#7c3aed" fill-opacity=".3" stroke="#7c3aed" stroke-width="1.5"/>
+                <circle cx="21" cy="28" r="2.5" fill="#7c3aed" fill-opacity=".3" stroke="#7c3aed" stroke-width="1.5"/>
+                <circle cx="30" cy="16" r="2.5" fill="#7c3aed" fill-opacity=".3" stroke="#7c3aed" stroke-width="1.5"/>
+                <circle cx="38" cy="10" r="3"   fill="#7c3aed" fill-opacity=".6" stroke="#7c3aed" stroke-width="1.5"/>
+                <path d="M6 36h32" stroke="#7c3aed" stroke-width="1.5" stroke-opacity=".3"/>
+              </svg>
+            </div>
+            <span class="icon-demo-label">Tendencia</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         STORAGE GUIDE — 4 opciones para agregar gráficos
+    ═══════════════════════════════════════════════════ -->
+    <section class="section section-alt" id="guia" aria-labelledby="guia-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Guía técnica</span>
+          <h2 class="section-title" id="guia-heading">Cómo agregar tus propios gráficos</h2>
+          <p class="section-subtitle">4 opciones para conectar tus datos reales al dashboard. Elige la que mejor se adapte a tu flujo de trabajo.</p>
+        </div>
+
+        <!-- Folder structure -->
+        <div class="folder-tree" style="max-width:500px; margin: 0 auto 2.5rem;" role="img" aria-label="Estructura de carpetas del proyecto">
+          <div><span class="folder">assets/</span></div>
+          <div>&nbsp;&nbsp;├── <span class="folder">graphics/</span></div>
+          <div>&nbsp;&nbsp;│&nbsp;&nbsp; ├── <span class="folder">dashboards/</span>&nbsp; <span class="note">← GIFs / PNGs</span></div>
+          <div>&nbsp;&nbsp;│&nbsp;&nbsp; ├── <span class="folder">charts/</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="note">← SVGs interactivos</span></div>
+          <div>&nbsp;&nbsp;│&nbsp;&nbsp; └── <span class="folder">icons/</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="note">← Iconografía</span></div>
+          <div>&nbsp;&nbsp;├── <span class="folder">video/</span></div>
+          <div>&nbsp;&nbsp;│&nbsp;&nbsp; └── <span class="folder">demos/</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="note">← Videos .mp4</span></div>
+          <div>&nbsp;&nbsp;└── <span class="file">README.md</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="note">← Guía completa</span></div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="storage-tabs" role="tablist" aria-label="Opciones de almacenamiento de gráficos">
+          <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-gif"   id="btn-gif">GIF / WebP</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-svg"   id="btn-svg">SVG</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-embed" id="btn-embed">Embed (BI)</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-video" id="btn-video">Video MP4</button>
+        </div>
+
+        <!-- Tab: GIF -->
+        <div class="tab-panel active" id="tab-gif" role="tabpanel" aria-labelledby="btn-gif">
+          <div class="storage-card">
+            <div class="storage-card-header">
+              <span class="storage-badge badge-gif">GIF / WebP</span>
+              <strong>Demostraciones rápidas animadas</strong>
+            </div>
+            <div class="storage-card-body">
+              <div class="storage-meta">
+                <div class="meta-item"><span class="meta-key">Formato</span><span class="meta-val">.gif &nbsp;·&nbsp; .webp</span></div>
+                <div class="meta-item"><span class="meta-key">Peso recomendado</span><span class="meta-val">500 KB – 2 MB</span></div>
+                <div class="meta-item"><span class="meta-key">Carpeta destino</span><span class="meta-val">assets/graphics/dashboards/</span></div>
+                <div class="meta-item"><span class="meta-key">Caso de uso</span><span class="meta-val">Demos rápidas de pantallas</span></div>
+              </div>
+              <div class="code-block" aria-label="Ejemplo de código HTML para imagen GIF">
+<span class="comment">&lt;!-- 1. Coloca tu archivo en assets/graphics/dashboards/ --&gt;</span>
+<span class="tag">&lt;img</span>
+  <span class="attr">src</span>=<span class="val">"assets/graphics/dashboards/mi-dashboard.gif"</span>
+  <span class="attr">alt</span>=<span class="val">"Vista del dashboard de analytics"</span>
+  <span class="attr">width</span>=<span class="val">"100%"</span>
+  <span class="attr">loading</span>=<span class="val">"lazy"</span>
+<span class="tag">&gt;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: SVG -->
+        <div class="tab-panel" id="tab-svg" role="tabpanel" aria-labelledby="btn-svg">
+          <div class="storage-card">
+            <div class="storage-card-header">
+              <span class="storage-badge badge-svg">SVG</span>
+              <strong>Gráficos editables y vectoriales</strong>
+            </div>
+            <div class="storage-card-body">
+              <div class="storage-meta">
+                <div class="meta-item"><span class="meta-key">Formato</span><span class="meta-val">.svg</span></div>
+                <div class="meta-item"><span class="meta-key">Peso recomendado</span><span class="meta-val">50 – 200 KB</span></div>
+                <div class="meta-item"><span class="meta-key">Carpeta destino</span><span class="meta-val">assets/graphics/charts/</span></div>
+                <div class="meta-item"><span class="meta-key">Caso de uso</span><span class="meta-val">Gráficos de alta calidad editables</span></div>
+              </div>
+              <div class="code-block" aria-label="Ejemplo de código HTML para SVG">
+<span class="comment">&lt;!-- Como etiqueta img --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"assets/graphics/charts/grafico.svg"</span>
+     <span class="attr">alt</span>=<span class="val">"Gráfico de crecimiento anual"</span> <span class="attr">width</span>=<span class="val">"800"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- O embebido inline (permite animaciones CSS/JS) --&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">viewBox</span>=<span class="val">"0 0 800 400"</span> <span class="attr">xmlns</span>=<span class="val">"http://www.w3.org/2000/svg"</span><span class="tag">&gt;</span>
+  <span class="comment">&lt;!-- contenido del SVG aquí --&gt;</span>
+<span class="tag">&lt;/svg&gt;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Embed -->
+        <div class="tab-panel" id="tab-embed" role="tabpanel" aria-labelledby="btn-embed">
+          <div class="storage-card">
+            <div class="storage-card-header">
+              <span class="storage-badge badge-embed">Embed BI</span>
+              <strong>Tableau · Power BI · Looker Studio</strong>
+            </div>
+            <div class="storage-card-body">
+              <div class="storage-meta">
+                <div class="meta-item"><span class="meta-key">Plataformas</span><span class="meta-val">Tableau, Power BI, Looker</span></div>
+                <div class="meta-item"><span class="meta-key">Almacenamiento</span><span class="meta-val">Links externos</span></div>
+                <div class="meta-item"><span class="meta-key">Actualización</span><span class="meta-val">Automática en tiempo real</span></div>
+                <div class="meta-item"><span class="meta-key">Caso de uso</span><span class="meta-val">Dashboards actualizables en vivo</span></div>
+              </div>
+              <div class="code-block" aria-label="Ejemplo de código HTML para iframe de Tableau">
+<span class="comment">&lt;!-- 1. En Tableau/Power BI selecciona "Compartir → Embed code" --&gt;</span>
+<span class="comment">&lt;!-- 2. Copia el código &lt;iframe&gt; y pégalo aquí --&gt;</span>
+<span class="tag">&lt;iframe</span>
+  <span class="attr">src</span>=<span class="val">"https://public.tableau.com/views/MiDash/Sheet1?:embed=y"</span>
+  <span class="attr">width</span>=<span class="val">"100%"</span>
+  <span class="attr">height</span>=<span class="val">"480"</span>
+  <span class="attr">frameborder</span>=<span class="val">"0"</span>
+  <span class="attr">allowfullscreen</span>
+  <span class="attr">title</span>=<span class="val">"Dashboard de Kakuaa"</span>
+<span class="tag">&gt;&lt;/iframe&gt;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Video -->
+        <div class="tab-panel" id="tab-video" role="tabpanel" aria-labelledby="btn-video">
+          <div class="storage-card">
+            <div class="storage-card-header">
+              <span class="storage-badge badge-video">Video MP4</span>
+              <strong>Demostraciones complejas animadas</strong>
+            </div>
+            <div class="storage-card-body">
+              <div class="storage-meta">
+                <div class="meta-item"><span class="meta-key">Formato</span><span class="meta-val">.mp4 (H.264)</span></div>
+                <div class="meta-item"><span class="meta-key">Peso recomendado</span><span class="meta-val">5 – 20 MB comprimido</span></div>
+                <div class="meta-item"><span class="meta-key">Carpeta destino</span><span class="meta-val">assets/video/demos/</span></div>
+                <div class="meta-item"><span class="meta-key">Caso de uso</span><span class="meta-val">Demos complejas o con narración</span></div>
+              </div>
+              <div class="code-block" aria-label="Ejemplo de código HTML para video MP4">
+<span class="comment">&lt;!-- 1. Coloca el archivo en assets/video/demos/ --&gt;</span>
+<span class="tag">&lt;video</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">muted</span> <span class="attr">loop</span> <span class="attr">playsinline</span>
+       <span class="attr">width</span>=<span class="val">"100%"</span> <span class="attr">style</span>=<span class="val">"border-radius:12px"</span>
+       <span class="attr">preload</span>=<span class="val">"none"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="val">"assets/video/demos/demo-dashboard.mp4"</span>
+          <span class="attr">type</span>=<span class="val">"video/mp4"</span><span class="tag">&gt;</span>
+  Tu navegador no soporta el elemento de video.
+<span class="tag">&lt;/video&gt;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.container -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         CTA
+    ═══════════════════════════════════════════════════ -->
+    <section class="cta-section" id="demo" aria-labelledby="cta-heading">
+      <div class="cta-inner">
+        <h2 class="cta-title" id="cta-heading">¿Listo para impulsar tu crecimiento?</h2>
+        <p class="cta-subtitle">Agenda una demo personalizada y descubre cómo Kakuaa puede transformar la toma de decisiones en tu empresa.</p>
+        <div class="cta-actions">
+          <a href="mailto:demo@kakuaa.me?subject=Solicito%20una%20demo" class="btn btn-hero btn-hero-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+            Agendar demo gratuita
+          </a>
+          <a href="#contacto" class="btn btn-hero btn-hero-ghost" id="contacto">Hablar con ventas</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2024 <a href="https://kakuaa.me">Kakuaa</a> · Inteligencia de Negocios · Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════════ -->
+  <script>
+    /* ── Mobile menu toggle ── */
+    const toggle = document.getElementById('menu-toggle');
+    const nav    = document.getElementById('primary-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open', !expanded);
+    });
+
+    /* ── Tab switcher ── */
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
+      });
+    });
+
+    /* ── Animated growth bars (IntersectionObserver) ── */
+    const barObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('.bar-fill').forEach(fill => {
+          fill.style.width = fill.dataset.target + '%';
+        });
+        barObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    const barsSection = document.querySelector('.growth-bars');
+    if (barsSection) barObserver.observe(barsSection);
+
+    /* ── Chart.js — initialize when library loads ── */
+    function initCharts() {
+      if (typeof Chart === 'undefined') return;
+
+      const gridColor = 'rgba(255,255,255,.07)';
+      const tickColor = 'rgba(255,255,255,.45)';
+
+      const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+                      'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+      /* Line chart */
+      new Chart(document.getElementById('chartLine'), {
+        type: 'line',
+        data: {
+          labels: months,
+          datasets: [{
+            label: 'Ingresos ($K)',
+            data: [120,145,132,180,210,195,230,260,245,290,310,340],
+            borderColor: '#4db87a',
+            backgroundColor: 'rgba(77,184,122,.12)',
+            pointBackgroundColor: '#4db87a',
+            pointRadius: 3,
+            fill: true,
+            tension: 0.4
+          }, {
+            label: 'Meta ($K)',
+            data: [130,150,160,175,200,210,220,250,255,280,295,330],
+            borderColor: 'rgba(255,255,255,.25)',
+            borderDash: [5, 4],
+            pointRadius: 0,
+            fill: false,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          animation: { duration: 1200 },
+          plugins: { legend: { labels: { color: tickColor, boxWidth: 12, font: { size: 11 } } } },
+          scales: {
+            x: { grid: { color: gridColor }, ticks: { color: tickColor, font: { size: 10 } } },
+            y: { grid: { color: gridColor }, ticks: { color: tickColor, font: { size: 10 } } }
+          }
+        }
+      });
+
+      /* Bar chart */
+      new Chart(document.getElementById('chartBar'), {
+        type: 'bar',
+        data: {
+          labels: ['Orgánico', 'Referidos', 'Paid', 'Email', 'Social'],
+          datasets: [{
+            label: 'Clientes nuevos',
+            data: [340, 210, 178, 145, 120],
+            backgroundColor: [
+              'rgba(77,184,122,.8)',
+              'rgba(0,201,177,.8)',
+              'rgba(244,162,97,.8)',
+              'rgba(124,58,237,.8)',
+              'rgba(248,113,113,.8)'
+            ],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          animation: { duration: 1400 },
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { color: gridColor }, ticks: { color: tickColor, font: { size: 10 } } },
+            y: { grid: { color: gridColor }, ticks: { color: tickColor, font: { size: 10 } } }
+          }
+        }
+      });
+
+      /* Donut chart */
+      new Chart(document.getElementById('chartDonut'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Enterprise', 'PyME', 'Startup', 'Gobierno'],
+          datasets: [{
+            data: [42, 31, 18, 9],
+            backgroundColor: ['#4db87a','#00c9b1','#f4a261','#a78bfa'],
+            borderColor: '#1a2332',
+            borderWidth: 3,
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          responsive: false,
+          animation: { duration: 1200, animateRotate: true },
+          cutout: '62%',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: { color: tickColor, boxWidth: 10, padding: 14, font: { size: 11 } }
+            }
+          }
+        }
+      });
+
+      /* Area sparkline */
+      const days = Array.from({ length: 30 }, (_, i) => i + 1);
+      const sessions = days.map(d => Math.round(1800 + Math.sin(d * .5) * 400 + Math.random() * 300));
+
+      new Chart(document.getElementById('chartArea'), {
+        type: 'line',
+        data: {
+          labels: days,
+          datasets: [{
+            label: 'Sesiones',
+            data: sessions,
+            borderColor: '#00c9b1',
+            backgroundColor: 'rgba(0,201,177,.12)',
+            pointRadius: 0,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          animation: { duration: 1600 },
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { color: gridColor }, ticks: { color: tickColor, font: { size: 9 }, maxTicksLimit: 6 } },
+            y: { grid: { color: gridColor }, ticks: { color: tickColor, font: { size: 9 }, maxTicksLimit: 4 } }
+          }
+        }
+      });
+    }
+
+    /* Retry in case Chart.js loads async */
+    if (typeof Chart !== 'undefined') {
+      initCharts();
+    } else {
+      document.querySelector('script[src*="chart.js"]')?.addEventListener('load', initCharts);
+      window.addEventListener('load', initCharts);
+    }
+
+    /* ── Simulated live KPI updates ── */
+    function randomDelta(val, pct) {
+      return Math.round(val * (1 + (Math.random() - 0.5) * pct));
+    }
+    setInterval(() => {
+      const metricClients = document.getElementById('metric-clients');
+      const metricData    = document.getElementById('metric-data');
+      if (metricClients) {
+        const n = randomDelta(340, 0.02);
+        metricClients.textContent = n + '+';
+      }
+      if (metricData) {
+        const m = (randomDelta(12000, 0.01) / 1000).toFixed(1);
+        metricData.textContent = m + 'M';
+      }
+    }, 4000);
+  </script>
+</body>
+</html>
