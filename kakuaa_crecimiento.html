@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="KAKUAA — Automatización, Ciencia de Datos y Agentes de IA para todos: empresas, startups, pymes, emprendedores y profesionales independientes. Del Guaraní: Crecimiento y Desarrollo." />
-  <meta name="keywords" content="KAKUAA, automatización, inteligencia artificial, IA, ciencia de datos, emprendedores, startups, pymes, freelancers, crecimiento, Guaraní" />
+  <meta name="description" content="KAKUAA — Automatización inteligente para tu negocio: OCR, validación de datos, integración ERP/CRM. Del Guaraní: Crecimiento y Desarrollo. Para empresas, pymes, startups y emprendedores en Paraguay." />
+  <meta name="keywords" content="KAKUAA, automatización, automatización de procesos, OCR, reconocimiento óptico, validación de datos, integración ERP, integración CRM, inteligencia artificial, IA, ciencia de datos, pymes, startups, emprendedores, Paraguay, Guaraní, crecimiento" />
   <meta name="author" content="KAKUAA" />
-  <meta property="og:title" content="KAKUAA — Crecimiento y Desarrollo para Todos" />
-  <meta property="og:description" content="Automatización, Ciencia de Datos y Agentes de IA accesibles para empresas, emprendedores y profesionales independientes." />
+  <meta property="og:title" content="KAKUAA — Automatización inteligente para tu negocio" />
+  <meta property="og:description" content="OCR, validación de datos e integración ERP/CRM accesibles para empresas, pymes y emprendedores. Creceremos juntos hacia Ciencia de Datos y Agentes de IA." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kakuaa.me/kakuaa_crecimiento.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KAKUAA — Crecimiento y Desarrollo para Todos" />
-  <meta name="twitter:description" content="Automatización, Ciencia de Datos y Agentes de IA accesibles para todos." />
-  <title>KAKUAA — Crecimiento y Desarrollo para Todos</title>
+  <meta name="twitter:title" content="KAKUAA — Automatización inteligente para tu negocio" />
+  <meta name="twitter:description" content="OCR, validación de datos, integración ERP/CRM. Creceremos juntos hacia Ciencia de Datos y Agentes de IA." />
+  <title>KAKUAA — Automatización inteligente para tu negocio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -81,23 +81,18 @@
       top: 0;
       left: 0;
       right: 0;
+      width: 100%;
       z-index: 100;
-      background: rgba(255, 255, 255, 0);
-      backdrop-filter: blur(0px);
-      -webkit-backdrop-filter: blur(0px);
-      border-bottom: 1px solid transparent;
-      box-shadow: none;
-      transition: background 0.35s ease, backdrop-filter 0.35s ease,
-                  -webkit-backdrop-filter 0.35s ease, border-color 0.35s ease,
-                  box-shadow 0.35s ease;
-    }
-
-    .navbar--solid {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--color-border);
       box-shadow: var(--shadow-sm);
+      transition: background 0.35s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.6);
     }
 
     .navbar__inner {
@@ -1313,9 +1308,9 @@
           <article class="plan-card" aria-labelledby="plan-basico-title">
             <h3 class="plan-card__name" id="plan-basico-title">Básico</h3>
             <p class="plan-card__audience">Freelancers y Emprendedores que comienzan</p>
-            <div class="plan-card__price" aria-label="Precio: 29 dólares por mes">
-              <span class="currency">$</span>
-              <span class="amount">29</span>
+            <div class="plan-card__price" aria-label="Precio: 750.000 guaraníes por mes">
+              <span class="currency">₲</span>
+              <span class="amount">750.000</span>
               <span class="period">/ mes</span>
             </div>
             <ul class="plan-card__features" aria-label="Características del plan Básico">
@@ -1337,9 +1332,9 @@
             <div class="plan-card__badge">Más Popular</div>
             <h3 class="plan-card__name" id="plan-avanzado-title">Avanzado</h3>
             <p class="plan-card__audience">Pymes, Startups y Equipos en crecimiento</p>
-            <div class="plan-card__price" aria-label="Precio: 99 dólares por mes">
-              <span class="currency">$</span>
-              <span class="amount">99</span>
+            <div class="plan-card__price" aria-label="Precio: 1.500.000 guaraníes por mes">
+              <span class="currency">₲</span>
+              <span class="amount">1.500.000</span>
               <span class="period">/ mes</span>
             </div>
             <ul class="plan-card__features" aria-label="Características del plan Avanzado">
@@ -1360,8 +1355,8 @@
           <article class="plan-card" aria-labelledby="plan-premium-title">
             <h3 class="plan-card__name" id="plan-premium-title">Premium</h3>
             <p class="plan-card__audience">Empresas y Corporaciones que requieren escala</p>
-            <div class="plan-card__price" aria-label="Precio personalizado">
-              <span class="custom">A medida</span>
+            <div class="plan-card__price" aria-label="Precio: desde 3.500.000 guaraníes">
+              <span class="custom">Hablemos</span>
             </div>
             <ul class="plan-card__features" aria-label="Características del plan Premium">
               <li class="plan-card__vertical">⚡ Automatización</li>
@@ -1374,7 +1369,7 @@
               <li><span class="check" aria-hidden="true">✓</span> Soporte 24/7 con gerente de cuenta</li>
             </ul>
             <a href="#contacto" class="btn btn-outline plan-card__cta">Solicitar Consulta</a>
-            <p class="plan-card__note">Consulta personalizada &middot; Sin compromiso</p>
+            <p class="plan-card__note">Desde ₲ 3.500.000 &middot; Consulta sin compromiso</p>
           </article>
 
         </div>
@@ -1525,15 +1520,15 @@
   </footer>
 
   <script>
-    // Navbar: toggle solid state on scroll
+    // Navbar: toggle scrolled state on scroll
     (function () {
       var navbar = document.querySelector('.navbar');
       var THRESHOLD = 60;
       function updateNavbar() {
         if (window.scrollY > THRESHOLD) {
-          navbar.classList.add('navbar--solid');
+          navbar.classList.add('scrolled');
         } else {
-          navbar.classList.remove('navbar--solid');
+          navbar.classList.remove('scrolled');
         }
       }
       window.addEventListener('scroll', updateNavbar, { passive: true });
