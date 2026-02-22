@@ -47,6 +47,7 @@
       color: var(--color-text);
       line-height: 1.65;
       font-size: 1rem;
+      padding-top: 68px; /* offset for fixed navbar */
     }
 
     img { max-width: 100%; display: block; }
@@ -76,10 +77,25 @@
 
     /* ===== NAVBAR ===== */
     .navbar {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: var(--color-surface);
+      background: rgba(255, 255, 255, 0);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      box-shadow: none;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease,
+                  -webkit-backdrop-filter 0.35s ease, border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+    }
+
+    .navbar--solid {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--color-border);
       box-shadow: var(--shadow-sm);
     }
@@ -839,6 +855,99 @@
 
     .footer__copy { font-size: .82rem; }
 
+    /* ===== PRÓXIMAMENTE ===== */
+    .proximamente {
+      background: var(--color-secondary);
+      color: #fff;
+    }
+
+    .proximamente .section-header__eyebrow {
+      color: var(--color-accent);
+    }
+
+    .proximamente .section-header__title,
+    .proximamente .section-header__desc {
+      color: #fff;
+    }
+
+    .proximamente .section-header__desc {
+      opacity: .85;
+    }
+
+    .prox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .prox-card {
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .prox-card:hover {
+      background: rgba(255, 255, 255, .14);
+      transform: translateY(-4px);
+    }
+
+    .prox-card__icon {
+      font-size: 2.2rem;
+      margin-bottom: .9rem;
+      line-height: 1;
+    }
+
+    .prox-card__label {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--color-accent);
+      color: var(--color-secondary);
+      padding: .2rem .65rem;
+      border-radius: 999px;
+      margin-bottom: .75rem;
+    }
+
+    .prox-card__title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+      color: #fff;
+    }
+
+    .prox-card__desc {
+      font-size: .9rem;
+      opacity: .8;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .prox-card__features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+
+    .prox-card__features li {
+      font-size: .88rem;
+      opacity: .85;
+      display: flex;
+      align-items: flex-start;
+      gap: .45rem;
+    }
+
+    .prox-card__features li::before {
+      content: "→";
+      color: var(--color-accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .navbar__nav { display: none; }
@@ -864,6 +973,7 @@
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#casos">Casos de Uso</a></li>
           <li><a href="#planes">Planes</a></li>
+          <li><a href="#proximamente">Próximamente</a></li>
           <li><a href="#contacto" class="btn btn-primary">Empieza Gratis</a></li>
         </ul>
       </div>
@@ -878,12 +988,12 @@
       <div class="container">
         <p class="hero__badge">KAKUAA — Del Guaraní: Crecimiento y Desarrollo</p>
         <h1 class="hero__title" id="hero-title">
-          La IA que <em>crece contigo</em>,<br />
-          seas quien seas
+          Automatización inteligente<br />
+          para tu <em>negocio</em>
         </h1>
         <p class="hero__subtitle">
-          Automatización, Ciencia de Datos y Agentes de IA al alcance de todos:
-          desde el emprendedor que acaba de arrancar hasta la empresa que quiere escalar.
+          Empieza a automatizar hoy: OCR, validación de datos, integración con ERP y CRM.
+          De acá a un año, creceremos juntos hacia Ciencia de Datos y Agentes de IA.
         </p>
         <div class="hero__actions">
           <a href="#planes" class="btn btn-primary btn-lg">Ver Planes</a>
@@ -1211,14 +1321,12 @@
             <ul class="plan-card__features" aria-label="Características del plan Básico">
               <li class="plan-card__vertical">⚡ Automatización</li>
               <li><span class="check" aria-hidden="true">✓</span> 500 automatizaciones/mes</li>
+              <li><span class="check" aria-hidden="true">✓</span> OCR básico (lectura de documentos)</li>
+              <li><span class="check" aria-hidden="true">✓</span> Validación de datos en formularios</li>
               <li><span class="check" aria-hidden="true">✓</span> Plantillas de flujos listas para usar</li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Automatizaciones personalizadas</span></li>
-              <li class="plan-card__vertical">📊 Ciencia de Datos</li>
-              <li><span class="check" aria-hidden="true">✓</span> Dashboard básico de métricas</li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Análisis predictivo</span></li>
-              <li class="plan-card__vertical">🤖 Agentes de IA</li>
-              <li><span class="check" aria-hidden="true">✓</span> 1 Agente de IA activo</li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Agentes de IA personalizados</span></li>
+              <li><span class="check" aria-hidden="true">✓</span> Notificaciones y alertas automáticas</li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Integración ERP/CRM</span></li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Flujos personalizados</span></li>
             </ul>
             <a href="#contacto" class="btn btn-outline plan-card__cta">Empezar Gratis</a>
             <p class="plan-card__note">14 días de prueba gratis &middot; Sin tarjeta de crédito</p>
@@ -1237,16 +1345,12 @@
             <ul class="plan-card__features" aria-label="Características del plan Avanzado">
               <li class="plan-card__vertical">⚡ Automatización</li>
               <li><span class="check" aria-hidden="true">✓</span> Automatizaciones ilimitadas</li>
-              <li><span class="check" aria-hidden="true">✓</span> Integraciones API (CRM, ERP)</li>
+              <li><span class="check" aria-hidden="true">✓</span> OCR avanzado con extracción de datos</li>
+              <li><span class="check" aria-hidden="true">✓</span> Validación y limpieza de datos avanzada</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integración con CRM (HubSpot, Salesforce)</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integración con ERP (SAP, Odoo)</li>
               <li><span class="check" aria-hidden="true">✓</span> Flujos de trabajo personalizados</li>
-              <li class="plan-card__vertical">📊 Ciencia de Datos</li>
-              <li><span class="check" aria-hidden="true">✓</span> Análisis predictivo y tendencias</li>
-              <li><span class="check" aria-hidden="true">✓</span> Dashboards interactivos en tiempo real</li>
-              <li><span class="check" aria-hidden="true">✓</span> Informes semanales automáticos</li>
-              <li class="plan-card__vertical">🤖 Agentes de IA</li>
-              <li><span class="check" aria-hidden="true">✓</span> Hasta 5 Agentes de IA activos</li>
-              <li><span class="check" aria-hidden="true">✓</span> Generación de contenido con IA</li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Infraestructura dedicada</span></li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Arquitectura dedicada</span></li>
             </ul>
             <a href="#contacto" class="btn btn-primary plan-card__cta">Comenzar Ahora</a>
             <p class="plan-card__note">14 días de prueba gratis</p>
@@ -1261,20 +1365,67 @@
             </div>
             <ul class="plan-card__features" aria-label="Características del plan Premium">
               <li class="plan-card__vertical">⚡ Automatización</li>
-              <li><span class="check" aria-hidden="true">✓</span> Flujos y automatizaciones ilimitadas</li>
+              <li><span class="check" aria-hidden="true">✓</span> Automatizaciones y flujos ilimitados</li>
+              <li><span class="check" aria-hidden="true">✓</span> OCR a escala con modelos personalizados</li>
+              <li><span class="check" aria-hidden="true">✓</span> Pipeline de validación de datos a medida</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integración completa ERP/CRM/Legado</li>
               <li><span class="check" aria-hidden="true">✓</span> Integración con Google Stitch</li>
-              <li><span class="check" aria-hidden="true">✓</span> Arquitectura personalizada</li>
-              <li class="plan-card__vertical">📊 Ciencia de Datos</li>
-              <li><span class="check" aria-hidden="true">✓</span> Ciencia de datos y ML a medida</li>
-              <li><span class="check" aria-hidden="true">✓</span> Infraestructura de datos dedicada</li>
               <li><span class="check" aria-hidden="true">✓</span> SLA garantizado 99.9%</li>
-              <li class="plan-card__vertical">🤖 Agentes de IA</li>
-              <li><span class="check" aria-hidden="true">✓</span> Agentes de IA ilimitados</li>
               <li><span class="check" aria-hidden="true">✓</span> Soporte 24/7 con gerente de cuenta</li>
-              <li><span class="check" aria-hidden="true">✓</span> Capacitación para todo el equipo</li>
             </ul>
             <a href="#contacto" class="btn btn-outline plan-card__cta">Solicitar Consulta</a>
             <p class="plan-card__note">Consulta personalizada &middot; Sin compromiso</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRÓXIMAMENTE ===== -->
+    <section class="proximamente" id="proximamente" aria-labelledby="prox-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Próximamente</span>
+          <h2 class="section-header__title" id="prox-title">
+            El camino que recorreremos juntos
+          </h2>
+          <p class="section-header__desc">
+            Hoy empezamos con Automatización. De acá a un año, KAKUAA evolucionará
+            contigo hacia Ciencia de Datos y Agentes de IA, sin que tengas que cambiar de plataforma.
+          </p>
+        </div>
+        <div class="prox-grid">
+
+          <article class="prox-card">
+            <div class="prox-card__icon" aria-hidden="true">📊</div>
+            <span class="prox-card__label">Año 1 — Q3/Q4</span>
+            <h3 class="prox-card__title">Ciencia de Datos</h3>
+            <p class="prox-card__desc">
+              Convierte los datos que ya tienes en decisiones inteligentes.
+              Dashboards, análisis predictivo e informes automáticos.
+            </p>
+            <ul class="prox-card__features" aria-label="Funcionalidades futuras de Ciencia de Datos">
+              <li>Dashboards interactivos en tiempo real</li>
+              <li>Análisis predictivo de ventas y demanda</li>
+              <li>Detección de anomalías en tus datos</li>
+              <li>Reportes automáticos personalizados</li>
+            </ul>
+          </article>
+
+          <article class="prox-card">
+            <div class="prox-card__icon" aria-hidden="true">🤖</div>
+            <span class="prox-card__label">Año 1 — Q4 / Año 2</span>
+            <h3 class="prox-card__title">Agentes de IA</h3>
+            <p class="prox-card__desc">
+              Asistentes inteligentes que aprenden de tu negocio y actúan de forma autónoma,
+              disponibles las 24 horas.
+            </p>
+            <ul class="prox-card__features" aria-label="Funcionalidades futuras de Agentes de IA">
+              <li>Agente de atención al cliente 24/7</li>
+              <li>Asistente interno para tu equipo</li>
+              <li>Generación de contenido personalizado</li>
+              <li>Automatización conversacional avanzada</li>
+            </ul>
           </article>
 
         </div>
@@ -1365,6 +1516,7 @@
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#casos">Casos de Uso</a></li>
           <li><a href="#planes">Planes</a></li>
+          <li><a href="#proximamente">Próximamente</a></li>
           <li><a href="mailto:hola@kakuaa.me">Contacto</a></li>
         </ul>
       </nav>
@@ -1373,6 +1525,21 @@
   </footer>
 
   <script>
+    // Navbar: toggle solid state on scroll
+    (function () {
+      var navbar = document.querySelector('.navbar');
+      var THRESHOLD = 60;
+      function updateNavbar() {
+        if (window.scrollY > THRESHOLD) {
+          navbar.classList.add('navbar--solid');
+        } else {
+          navbar.classList.remove('navbar--solid');
+        }
+      }
+      window.addEventListener('scroll', updateNavbar, { passive: true });
+      updateNavbar(); // run once on load
+    }());
+
     // Tab filtering for use cases (progressive enhancement)
     (function () {
       var tabs = document.querySelectorAll('.tab-btn');
