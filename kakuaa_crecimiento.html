@@ -679,6 +679,28 @@
       margin-top: .75rem;
     }
 
+    /* Vertical-category separators inside plan feature lists */
+    .plan-card__vertical {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--color-secondary);
+      padding-top: .75rem;
+      margin-top: .25rem;
+      border-top: 1px solid var(--color-border);
+      list-style: none;
+    }
+
+    .plan-card__vertical:first-child {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: none;
+    }
+
     /* ===== PROCESO ===== */
     .proceso {
       background: var(--color-bg);
@@ -1155,7 +1177,7 @@
               <li>Soporte por chat y video tutoriales</li>
               <li>Escala cuando lo necesites</li>
             </ul>
-            <a href="#planes" class="btn btn-white-green btn-lg">Ver plan Starter</a>
+            <a href="#planes" class="btn btn-white-green btn-lg">Ver plan Básico</a>
           </article>
 
         </div>
@@ -1177,66 +1199,79 @@
         </div>
         <div class="planes-grid">
 
-          <!-- STARTER -->
-          <article class="plan-card" aria-labelledby="plan-starter-title">
-            <h3 class="plan-card__name" id="plan-starter-title">Starter</h3>
-            <p class="plan-card__audience">Ideal para Freelancers y personas que empiezan</p>
+          <!-- BÁSICO -->
+          <article class="plan-card" aria-labelledby="plan-basico-title">
+            <h3 class="plan-card__name" id="plan-basico-title">Básico</h3>
+            <p class="plan-card__audience">Freelancers y Emprendedores que comienzan</p>
             <div class="plan-card__price" aria-label="Precio: 29 dólares por mes">
               <span class="currency">$</span>
               <span class="amount">29</span>
               <span class="period">/ mes</span>
             </div>
-            <ul class="plan-card__features" aria-label="Características del plan Starter">
-              <li><span class="check" aria-hidden="true">✓</span> 1 Agente de IA activo</li>
-              <li><span class="check" aria-hidden="true">✓</span> Hasta 500 automatizaciones/mes</li>
+            <ul class="plan-card__features" aria-label="Características del plan Básico">
+              <li class="plan-card__vertical">⚡ Automatización</li>
+              <li><span class="check" aria-hidden="true">✓</span> 500 automatizaciones/mes</li>
+              <li><span class="check" aria-hidden="true">✓</span> Plantillas de flujos listas para usar</li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Automatizaciones personalizadas</span></li>
+              <li class="plan-card__vertical">📊 Ciencia de Datos</li>
               <li><span class="check" aria-hidden="true">✓</span> Dashboard básico de métricas</li>
-              <li><span class="check" aria-hidden="true">✓</span> Soporte por chat</li>
-              <li><span class="check" aria-hidden="true">✓</span> Plantillas listas para usar</li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Integraciones avanzadas</span></li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">SLA garantizado</span></li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Análisis predictivo</span></li>
+              <li class="plan-card__vertical">🤖 Agentes de IA</li>
+              <li><span class="check" aria-hidden="true">✓</span> 1 Agente de IA activo</li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Agentes de IA personalizados</span></li>
             </ul>
             <a href="#contacto" class="btn btn-outline plan-card__cta">Empezar Gratis</a>
             <p class="plan-card__note">14 días de prueba gratis &middot; Sin tarjeta de crédito</p>
           </article>
 
-          <!-- PROFESSIONAL -->
-          <article class="plan-card plan-card--featured" aria-labelledby="plan-pro-title">
+          <!-- AVANZADO -->
+          <article class="plan-card plan-card--featured" aria-labelledby="plan-avanzado-title">
             <div class="plan-card__badge">Más Popular</div>
-            <h3 class="plan-card__name" id="plan-pro-title">Professional</h3>
-            <p class="plan-card__audience">Para Pymes, Startups y Emprendedores en crecimiento</p>
+            <h3 class="plan-card__name" id="plan-avanzado-title">Avanzado</h3>
+            <p class="plan-card__audience">Pymes, Startups y Equipos en crecimiento</p>
             <div class="plan-card__price" aria-label="Precio: 99 dólares por mes">
               <span class="currency">$</span>
               <span class="amount">99</span>
               <span class="period">/ mes</span>
             </div>
-            <ul class="plan-card__features" aria-label="Características del plan Professional">
-              <li><span class="check" aria-hidden="true">✓</span> Hasta 5 Agentes de IA activos</li>
+            <ul class="plan-card__features" aria-label="Características del plan Avanzado">
+              <li class="plan-card__vertical">⚡ Automatización</li>
               <li><span class="check" aria-hidden="true">✓</span> Automatizaciones ilimitadas</li>
-              <li><span class="check" aria-hidden="true">✓</span> Ciencia de datos e informes</li>
-              <li><span class="check" aria-hidden="true">✓</span> Integraciones avanzadas (API)</li>
-              <li><span class="check" aria-hidden="true">✓</span> Soporte prioritario</li>
-              <li><span class="check" aria-hidden="true">✓</span> Capacitación inicial incluida</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integraciones API (CRM, ERP)</li>
+              <li><span class="check" aria-hidden="true">✓</span> Flujos de trabajo personalizados</li>
+              <li class="plan-card__vertical">📊 Ciencia de Datos</li>
+              <li><span class="check" aria-hidden="true">✓</span> Análisis predictivo y tendencias</li>
+              <li><span class="check" aria-hidden="true">✓</span> Dashboards interactivos en tiempo real</li>
+              <li><span class="check" aria-hidden="true">✓</span> Informes semanales automáticos</li>
+              <li class="plan-card__vertical">🤖 Agentes de IA</li>
+              <li><span class="check" aria-hidden="true">✓</span> Hasta 5 Agentes de IA activos</li>
+              <li><span class="check" aria-hidden="true">✓</span> Generación de contenido con IA</li>
               <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Infraestructura dedicada</span></li>
             </ul>
             <a href="#contacto" class="btn btn-primary plan-card__cta">Comenzar Ahora</a>
             <p class="plan-card__note">14 días de prueba gratis</p>
           </article>
 
-          <!-- ENTERPRISE -->
-          <article class="plan-card" aria-labelledby="plan-enterprise-title">
-            <h3 class="plan-card__name" id="plan-enterprise-title">Enterprise</h3>
-            <p class="plan-card__audience">Para Empresas y organizaciones que requieren escala</p>
+          <!-- PREMIUM -->
+          <article class="plan-card" aria-labelledby="plan-premium-title">
+            <h3 class="plan-card__name" id="plan-premium-title">Premium</h3>
+            <p class="plan-card__audience">Empresas y Corporaciones que requieren escala</p>
             <div class="plan-card__price" aria-label="Precio personalizado">
               <span class="custom">A medida</span>
             </div>
-            <ul class="plan-card__features" aria-label="Características del plan Enterprise">
-              <li><span class="check" aria-hidden="true">✓</span> Agentes y automatizaciones ilimitadas</li>
-              <li><span class="check" aria-hidden="true">✓</span> Infraestructura dedicada</li>
-              <li><span class="check" aria-hidden="true">✓</span> Seguridad y cumplimiento avanzado</li>
+            <ul class="plan-card__features" aria-label="Características del plan Premium">
+              <li class="plan-card__vertical">⚡ Automatización</li>
+              <li><span class="check" aria-hidden="true">✓</span> Flujos y automatizaciones ilimitadas</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integración con Google Stitch</li>
+              <li><span class="check" aria-hidden="true">✓</span> Arquitectura personalizada</li>
+              <li class="plan-card__vertical">📊 Ciencia de Datos</li>
+              <li><span class="check" aria-hidden="true">✓</span> Ciencia de datos y ML a medida</li>
+              <li><span class="check" aria-hidden="true">✓</span> Infraestructura de datos dedicada</li>
               <li><span class="check" aria-hidden="true">✓</span> SLA garantizado 99.9%</li>
+              <li class="plan-card__vertical">🤖 Agentes de IA</li>
+              <li><span class="check" aria-hidden="true">✓</span> Agentes de IA ilimitados</li>
               <li><span class="check" aria-hidden="true">✓</span> Soporte 24/7 con gerente de cuenta</li>
               <li><span class="check" aria-hidden="true">✓</span> Capacitación para todo el equipo</li>
-              <li><span class="check" aria-hidden="true">✓</span> Integración con Google Stitch</li>
             </ul>
             <a href="#contacto" class="btn btn-outline plan-card__cta">Solicitar Consulta</a>
             <p class="plan-card__note">Consulta personalizada &middot; Sin compromiso</p>
