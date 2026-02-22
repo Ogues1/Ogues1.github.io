@@ -14,18 +14,21 @@
   <meta name="twitter:title" content="KAKUAA — Crecimiento y Desarrollo para Todos" />
   <meta name="twitter:description" content="Automatización, Ciencia de Datos y Agentes de IA accesibles para todos." />
   <title>KAKUAA — Crecimiento y Desarrollo para Todos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     /* ===== VARIABLES Y RESET ===== */
     :root {
-      --color-primary:   #1a73e8;
-      --color-secondary: #0d47a1;
-      --color-accent:    #34a853;
-      --color-warm:      #f9ab00;
-      --color-bg:        #f8fafc;
-      --color-surface:   #ffffff;
-      --color-text:      #1e293b;
-      --color-muted:     #64748b;
-      --color-border:    #e2e8f0;
+      --color-primary:   #2ECC71;
+      --color-secondary: #1A237E;
+      --color-accent:    #F1C40F;
+      --color-warm:      #F1C40F;
+      --color-bg:        #ECEFF1;
+      --color-surface:   #FFFFFF;
+      --color-text:      #1A237E;
+      --color-muted:     #546E7A;
+      --color-border:    #CFD8DC;
       --radius:          12px;
       --shadow-sm:       0 1px 3px rgba(0,0,0,.08);
       --shadow-md:       0 4px 16px rgba(0,0,0,.10);
@@ -39,7 +42,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Roboto', sans-serif;
       background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.65;
@@ -152,7 +155,7 @@
       color: #fff;
     }
     .btn-accent:hover {
-      background: #2d9348;
+      background: #D4AC0D;
       text-decoration: none;
     }
 
@@ -160,7 +163,7 @@
 
     /* ===== HERO ===== */
     .hero {
-      background: linear-gradient(135deg, #e8f0fe 0%, #e6f4ea 100%);
+      background: linear-gradient(135deg, #e9faf2 0%, #ECEFF1 100%);
       padding-block: 5rem 4rem;
       text-align: center;
     }
@@ -328,9 +331,9 @@
       margin-bottom: 1rem;
     }
 
-    .icon-bg-blue  { background: #dbeafe; }
-    .icon-bg-green { background: #dcfce7; }
-    .icon-bg-amber { background: #fef9c3; }
+    .icon-bg-blue  { background: #e8eaf6; }
+    .icon-bg-green { background: #e9faf2; }
+    .icon-bg-amber { background: #fef9e7; }
 
     .servicio-card__title {
       font-weight: 700;
@@ -395,7 +398,7 @@
     .tab-btn[aria-selected="true"] {
       border-color: var(--color-primary);
       color: var(--color-primary);
-      background: #eff6ff;
+      background: #e9faf2;
     }
 
     .casos-grid {
@@ -425,9 +428,9 @@
       margin-bottom: .75rem;
     }
 
-    .tag-empresa   { background: #dbeafe; color: #1d4ed8; }
-    .tag-persona   { background: #dcfce7; color: #15803d; }
-    .tag-startup   { background: #fef9c3; color: #b45309; }
+    .tag-empresa   { background: #e8eaf6; color: #1A237E; }
+    .tag-persona   { background: #e9faf2; color: #27AE60; }
+    .tag-startup   { background: #fef9e7; color: #7D6608; }
 
     .caso-card__title {
       font-weight: 700;
@@ -469,12 +472,12 @@
     }
 
     .segmento-card--empresas {
-      background: linear-gradient(135deg, #1a73e8, #0d47a1);
+      background: linear-gradient(135deg, #1A237E, #283593);
       color: #fff;
     }
 
     .segmento-card--personas {
-      background: linear-gradient(135deg, #34a853, #1e7e34);
+      background: linear-gradient(135deg, #2ECC71, #27AE60);
       color: #fff;
     }
 
@@ -525,13 +528,13 @@
 
     .btn-white {
       background: #fff;
-      color: var(--color-primary);
+      color: var(--color-secondary);
       font-weight: 700;
     }
 
     .btn-white-green {
       background: #fff;
-      color: var(--color-accent);
+      color: var(--color-secondary);
       font-weight: 700;
     }
 
@@ -568,7 +571,7 @@
 
     .plan-card--featured {
       border-color: var(--color-primary);
-      background: #eff6ff;
+      background: #e9faf2;
       box-shadow: var(--shadow-lg);
     }
 
@@ -655,7 +658,7 @@
     }
 
     .plan-card__features li .cross {
-      color: #94a3b8;
+      color: #90A4AE;
       flex-shrink: 0;
     }
 
@@ -721,7 +724,7 @@
 
     /* ===== CTA FINAL ===== */
     .cta-final {
-      background: linear-gradient(135deg, #1a73e8, #34a853);
+      background: linear-gradient(135deg, #1A237E, #2ECC71);
       color: #fff;
       text-align: center;
       padding-block: 5rem;
@@ -752,7 +755,7 @@
 
     .btn-white-solid {
       background: #fff;
-      color: var(--color-primary);
+      color: var(--color-secondary);
       font-weight: 700;
     }
 
@@ -774,8 +777,8 @@
 
     /* ===== FOOTER ===== */
     .footer {
-      background: #0f172a;
-      color: #94a3b8;
+      background: #1A237E;
+      color: #CFD8DC;
       padding-block: 2.5rem;
       text-align: center;
       font-size: .9rem;
@@ -802,7 +805,7 @@
     }
 
     .footer__links a {
-      color: #94a3b8;
+      color: #CFD8DC;
       font-size: .9rem;
       transition: color var(--transition);
     }
@@ -1189,8 +1192,8 @@
               <li><span class="check" aria-hidden="true">✓</span> Dashboard básico de métricas</li>
               <li><span class="check" aria-hidden="true">✓</span> Soporte por chat</li>
               <li><span class="check" aria-hidden="true">✓</span> Plantillas listas para usar</li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #94a3b8;">Integraciones avanzadas</span></li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #94a3b8;">SLA garantizado</span></li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Integraciones avanzadas</span></li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">SLA garantizado</span></li>
             </ul>
             <a href="#contacto" class="btn btn-outline plan-card__cta">Empezar Gratis</a>
             <p class="plan-card__note">14 días de prueba gratis &middot; Sin tarjeta de crédito</p>
@@ -1213,7 +1216,7 @@
               <li><span class="check" aria-hidden="true">✓</span> Integraciones avanzadas (API)</li>
               <li><span class="check" aria-hidden="true">✓</span> Soporte prioritario</li>
               <li><span class="check" aria-hidden="true">✓</span> Capacitación inicial incluida</li>
-              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #94a3b8;">Infraestructura dedicada</span></li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Infraestructura dedicada</span></li>
             </ul>
             <a href="#contacto" class="btn btn-primary plan-card__cta">Comenzar Ahora</a>
             <p class="plan-card__note">14 días de prueba gratis</p>
