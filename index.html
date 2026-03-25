@@ -4,271 +4,188 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kakuaa — Crecimiento inteligente</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Kakuaa</title>
 
 <style>
-:root{
-  --verde:#2ECC71;
-  --azul:#1A237E;
-  --amarillo:#FDD835;
-  --gris:#ECEFF1;
-  --texto:#1A237E;
-}
-
 body{
+  font-family: Arial, sans-serif;
   margin:0;
-  font-family:'Open Sans',sans-serif;
-  color:var(--texto);
-  background:#fff;
-}
-
-/* NAV */
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:1rem 2rem;
-}
-
-.logo{
-  height:40px;
+  background:#f5f7fa;
+  color:#1A237E;
+  text-align:center;
 }
 
 /* HERO */
 .hero{
-  text-align:center;
-  padding:4rem 1.5rem;
-  background:linear-gradient(135deg,#ffffff,#ECEFF1);
+  padding:80px 20px;
 }
 
 .hero h1{
-  font-size:clamp(2.2rem,5vw,3rem);
-  font-weight:800;
-  margin-bottom:1rem;
+  font-size:48px;
 }
 
-.hero h1 span{
-  color:var(--verde);
+.hero span{
+  color:#2ECC71;
 }
 
-.subtitle{
-  max-width:580px;
-  margin:auto;
+.hero p{
+  font-size:20px;
   color:#546E7A;
-  font-size:1.1rem;
-  margin-bottom:2rem;
 }
 
-/* PRECIO */
-.price-box{
-  background:#fff;
-  border-radius:12px;
-  padding:1.5rem 2rem;
+.precio{
+  background:white;
+  padding:30px;
+  border-radius:15px;
   display:inline-block;
-  margin-bottom:2rem;
-  box-shadow:0 6px 25px rgba(0,0,0,0.05);
+  margin-top:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
 
-.price{
-  font-size:2.3rem;
-  font-weight:800;
+.precio strong{
+  font-size:32px;
+  color:#2ECC71;
 }
 
-.price span{
-  color:var(--verde);
-}
-
-/* BOTON */
 .btn{
   display:inline-block;
-  background:var(--verde);
-  color:#fff;
-  padding:0.9rem 2rem;
-  border-radius:50px;
-  font-weight:700;
+  margin-top:25px;
+  background:#2ECC71;
+  color:white;
+  padding:15px 30px;
+  border-radius:30px;
   text-decoration:none;
-  transition:.3s;
+  font-weight:bold;
 }
 
-.btn:hover{
-  background:var(--azul);
+/* FORM */
+.lead-form{
+  margin-top:80px;
 }
 
-/* FEATURES */
-.features{
-  padding:3rem 1rem;
-  text-align:center;
-}
-
-.features h2{
-  font-size:1.8rem;
-  margin-bottom:2rem;
-}
-
-.feature-grid{
-  display:flex;
-  justify-content:center;
-  gap:2rem;
-  flex-wrap:wrap;
-}
-
-.feature{
-  max-width:200px;
-}
-
-.feature img{
-  width:70px;
-  margin-bottom:0.7rem;
-}
-
-.feature h3{
-  font-size:1rem;
-  margin-bottom:0.3rem;
-}
-
-.feature p{
-  font-size:0.9rem;
-  color:#546E7A;
-}
-
-/* AUDIENCIA */
-.audience{
-  background:var(--gris);
-  padding:3rem 1rem;
-  text-align:center;
-}
-
-.audience h2{
-  margin-bottom:2rem;
-}
-
-.audience-grid{
-  display:flex;
-  gap:1.5rem;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.audience-item{
-  background:#fff;
-  padding:1rem 1.5rem;
+.lead-form input{
+  display:block;
+  margin:10px auto;
+  padding:12px;
+  width:250px;
   border-radius:10px;
-  font-size:0.9rem;
+  border:1px solid #ccc;
 }
 
-/* CTA FINAL */
-.cta{
-  text-align:center;
-  padding:3rem 1rem;
+.lead-form button{
+  background:#2ECC71;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:25px;
+  cursor:pointer;
 }
 
-.cta h2{
-  margin-bottom:1rem;
+#mensaje{
+  margin-top:10px;
 }
 
-.footer{
-  text-align:center;
-  padding:2rem;
-  font-size:0.8rem;
-  color:#777;
+/* ICONOS */
+.features{
+  margin-top:60px;
+}
+
+.features img{
+  width:60px;
+  margin:20px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:24px;
+  text-decoration:none;
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- NAV -->
-<div class="nav">
-  <img src="https://ogues1.github.io/img/Kakuaa.jpg" class="logo">
-  <a href="#" class="btn">Empezar</a>
-</div>
-
 <!-- HERO -->
 <section class="hero">
+  <h1>Crecé con <span>Kakuaa</span></h1>
 
-  <h1>
-    Crecé con <span>Kakuaa</span>
-  </h1>
-
-  <p class="subtitle">
-    Automatización, datos e inteligencia artificial para que tu negocio crezca sin fricción.
+  <p>
+    Automatización, datos e inteligencia artificial  
+    para que tu negocio crezca sin fricción
   </p>
 
-  <div class="price-box">
-    <div class="price">Desde <span>₲700.000</span></div>
-    <div style="font-size:0.85rem;color:#777;">/ mes</div>
+  <div class="precio">
+    <h2>Desde <strong>₲700.000</strong></h2>
+    <p>/ mes</p>
   </div>
 
-  <br>
-
-  <a href="#" class="btn">Empezar ahora</a>
-
+  <a href="#formulario" class="btn">Empezar ahora</a>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
+  <img src="img/Nemura.png">
+  <img src="img/Marandu.png">
+  <img src="img/Temiandu.png">
+  <img src="img/Nodo.png">
+</section>
 
-  <h2>Todo lo que necesitás para crecer</h2>
+<!-- FORM -->
+<section class="lead-form" id="formulario">
 
-  <div class="feature-grid">
+  <h2>Dejanos tus datos</h2>
 
-    <div class="feature">
-      <img src="https://ogues1.github.io/img/Nemura.png">
-      <h3>Automatización</h3>
-      <p>Procesos que se ejecutan solos</p>
-    </div>
+  <form id="form">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellido" placeholder="Apellido" required>
+    <input type="email" name="mail" placeholder="Email" required>
+    <input type="text" name="telefono" placeholder="Teléfono" required>
 
-    <div class="feature">
-      <img src="https://ogues1.github.io/img/Marandu.png">
-      <h3>Ciencia de datos</h3>
-      <p>Decisiones basadas en información</p>
-    </div>
+    <button type="submit">Quiero empezar</button>
+  </form>
 
-    <div class="feature">
-      <img src="https://ogues1.github.io/img/Temiandu.png">
-      <h3>Agentes de IA</h3>
-      <p>Asistentes inteligentes</p>
-    </div>
-
-    <div class="feature">
-      <img src="https://ogues1.github.io/img/Nodo.png">
-      <h3>Crecimiento continuo</h3>
-      <p>Evolución constante</p>
-    </div>
-
-  </div>
+  <p id="mensaje"></p>
 
 </section>
 
-<!-- AUDIENCIA -->
-<section class="audience">
+<!-- WHATSAPP -->
+<a href="https://wa.me/595981123456?text=Hola%20Kakuaa,%20quiero%20automatizar%20mi%20negocio" target="_blank" class="whatsapp">
+💬
+</a>
 
-  <h2>Hecho para vos</h2>
+<!-- SCRIPT -->
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
 
-  <div class="audience-grid">
-    <div class="audience-item">Empresas</div>
-    <div class="audience-item">Startups</div>
-    <div class="audience-item">Pymes</div>
-    <div class="audience-item">Freelancers</div>
-  </div>
+  const data = {
+    nombre: this.nombre.value,
+    apellido: this.apellido.value,
+    mail: this.mail.value,
+    telefono: this.telefono.value
+  };
 
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta">
-
-  <h2>Tu crecimiento empieza hoy</h2>
-
-  <a href="#" class="btn">Empezar ahora</a>
-
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-  Kakuaa — Crecimiento y desarrollo
-</div>
+  fetch("https://script.google.com/macros/s/AKfycbyNVF8qErCrLisxXUnZkZqahyhumWYP-qVIKoPDTymS_OhU2PA41s5mEM3zCESzT0rC/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    document.getElementById("mensaje").innerText = "✅ Gracias, te contactamos";
+    document.getElementById("form").reset();
+  })
+  .catch(() => {
+    document.getElementById("mensaje").innerText = "❌ Error al enviar";
+  });
+});
+</script>
 
 </body>
 </html>
