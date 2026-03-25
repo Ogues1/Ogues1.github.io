@@ -157,7 +157,767 @@ body{
 </section>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/595981123456?text=Hola%20Kakuaa,%20quiero%20automatizar%20mi%20negocio" target="_blank" class="whatsapp">
+<a href="https://wa.me/595981657533?text=Hola%20Kakuaa,%20quiero%20automatizar%20mi%20negocio" target="_blank" class="whatsapp">
+💬
+</a>
+
+<!-- SCRIPT -->
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const data = {
+    nombre: this.nombre.value,
+    apellido: this.apellido.value,
+    mail: this.mail.value,
+    telefono: this.telefono.value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbyNVF8qErCrLisxXUnZkZqahyhumWYP-qVIKoPDTymS_OhU2PA41s5mEM3zCESzT0rC/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    document.getElementById("mensaje").innerText = "✅ Gracias, te contactamos";
+    document.getElementById("form").reset();
+  })
+  .catch(() => {
+    document.getElementById("mensaje").innerText = "❌ Error al enviar";
+  });
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kakuaa</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f5f7fa;
+  color:#1A237E;
+  text-align:center;
+}
+
+/* HERO */
+.hero{
+  padding:80px 20px;
+}
+
+.hero h1{
+  font-size:48px;
+}
+
+.hero span{
+  color:#2ECC71;
+}
+
+.hero p{
+  font-size:20px;
+  color:#546E7A;
+}
+
+.precio{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  display:inline-block;
+  margin-top:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.precio strong{
+  font-size:32px;
+  color:#2ECC71;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  background:#2ECC71;
+  color:white;
+  padding:15px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* FORM */
+.lead-form{
+  margin-top:80px;
+}
+
+.lead-form input{
+  display:block;
+  margin:10px auto;
+  padding:12px;
+  width:250px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.lead-form button{
+  background:#2ECC71;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+#mensaje{
+  margin-top:10px;
+}
+
+/* ICONOS */
+.features{
+  margin-top:60px;
+}
+
+.features img{
+  width:60px;
+  margin:20px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:24px;
+  text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Crecé con <span>Kakuaa</span></h1>
+
+  <p>
+    Automatización, datos e inteligencia artificial  
+    para que tu negocio crezca sin fricción
+  </p>
+
+  <div class="precio">
+    <h2>Desde <strong>₲700.000</strong></h2>
+    <p>/ mes</p>
+  </div>
+
+  <a href="#formulario" class="btn">Empezar ahora</a>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <img src="img/Nemura.png">
+  <img src="img/Marandu.png">
+  <img src="img/Temiandu.png">
+  <img src="img/Nodo.png">
+</section>
+
+<!-- FORM -->
+<section class="lead-form" id="formulario">
+
+  <h2>Dejanos tus datos</h2>
+
+  <form id="form">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellido" placeholder="Apellido" required>
+    <input type="email" name="mail" placeholder="Email" required>
+    <input type="text" name="telefono" placeholder="Teléfono" required>
+
+    <button type="submit">Quiero empezar</button>
+  </form>
+
+  <p id="mensaje"></p>
+
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/595981657533?text=Hola%20Kakuaa,%20quiero%20automatizar%20mi%20negocio" target="_blank" class="whatsapp">
+💬
+</a>
+
+<!-- SCRIPT -->
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const data = {
+    nombre: this.nombre.value,
+    apellido: this.apellido.value,
+    mail: this.mail.value,
+    telefono: this.telefono.value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbyNVF8qErCrLisxXUnZkZqahyhumWYP-qVIKoPDTymS_OhU2PA41s5mEM3zCESzT0rC/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    document.getElementById("mensaje").innerText = "✅ Gracias, te contactamos";
+    document.getElementById("form").reset();
+  })
+  .catch(() => {
+    document.getElementById("mensaje").innerText = "❌ Error al enviar";
+  });
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kakuaa</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f5f7fa;
+  color:#1A237E;
+  text-align:center;
+}
+
+/* HERO */
+.hero{
+  padding:80px 20px;
+}
+
+.hero h1{
+  font-size:48px;
+}
+
+.hero span{
+  color:#2ECC71;
+}
+
+.hero p{
+  font-size:20px;
+  color:#546E7A;
+}
+
+.precio{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  display:inline-block;
+  margin-top:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.precio strong{
+  font-size:32px;
+  color:#2ECC71;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  background:#2ECC71;
+  color:white;
+  padding:15px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* FORM */
+.lead-form{
+  margin-top:80px;
+}
+
+.lead-form input{
+  display:block;
+  margin:10px auto;
+  padding:12px;
+  width:250px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.lead-form button{
+  background:#2ECC71;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+#mensaje{
+  margin-top:10px;
+}
+
+/* ICONOS */
+.features{
+  margin-top:60px;
+}
+
+.features img{
+  width:60px;
+  margin:20px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:24px;
+  text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Crecé con <span>Kakuaa</span></h1>
+
+  <p>
+    Automatización, datos e inteligencia artificial  
+    para que tu negocio crezca sin fricción
+  </p>
+
+  <div class="precio">
+    <h2>Desde <strong>₲700.000</strong></h2>
+    <p>/ mes</p>
+  </div>
+
+  <a href="#formulario" class="btn">Empezar ahora</a>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <img src="img/Nemura.png">
+  <img src="img/Marandu.png">
+  <img src="img/Temiandu.png">
+  <img src="img/Nodo.png">
+</section>
+
+<!-- FORM -->
+<section class="lead-form" id="formulario">
+
+  <h2>Dejanos tus datos</h2>
+
+  <form id="form">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellido" placeholder="Apellido" required>
+    <input type="email" name="mail" placeholder="Email" required>
+    <input type="text" name="telefono" placeholder="Teléfono" required>
+
+    <button type="submit">Quiero empezar</button>
+  </form>
+
+  <p id="mensaje"></p>
+
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/595981657533?text=Hola%20Kakuaa,%20quiero%20automatizar%20mi%20negocio" target="_blank" class="whatsapp">
+💬
+</a>
+
+<!-- SCRIPT -->
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const data = {
+    nombre: this.nombre.value,
+    apellido: this.apellido.value,
+    mail: this.mail.value,
+    telefono: this.telefono.value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbyNVF8qErCrLisxXUnZkZqahyhumWYP-qVIKoPDTymS_OhU2PA41s5mEM3zCESzT0rC/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    document.getElementById("mensaje").innerText = "✅ Gracias, te contactamos";
+    document.getElementById("form").reset();
+  })
+  .catch(() => {
+    document.getElementById("mensaje").innerText = "❌ Error al enviar";
+  });
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kakuaa</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f5f7fa;
+  color:#1A237E;
+  text-align:center;
+}
+
+/* HERO */
+.hero{
+  padding:80px 20px;
+}
+
+.hero h1{
+  font-size:48px;
+}
+
+.hero span{
+  color:#2ECC71;
+}
+
+.hero p{
+  font-size:20px;
+  color:#546E7A;
+}
+
+.precio{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  display:inline-block;
+  margin-top:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.precio strong{
+  font-size:32px;
+  color:#2ECC71;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  background:#2ECC71;
+  color:white;
+  padding:15px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* FORM */
+.lead-form{
+  margin-top:80px;
+}
+
+.lead-form input{
+  display:block;
+  margin:10px auto;
+  padding:12px;
+  width:250px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.lead-form button{
+  background:#2ECC71;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+#mensaje{
+  margin-top:10px;
+}
+
+/* ICONOS */
+.features{
+  margin-top:60px;
+}
+
+.features img{
+  width:60px;
+  margin:20px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:24px;
+  text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Crecé con <span>Kakuaa</span></h1>
+
+  <p>
+    Automatización, datos e inteligencia artificial  
+    para que tu negocio crezca sin fricción
+  </p>
+
+  <div class="precio">
+    <h2>Desde <strong>₲700.000</strong></h2>
+    <p>/ mes</p>
+  </div>
+
+  <a href="#formulario" class="btn">Empezar ahora</a>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <img src="img/Nemura.png">
+  <img src="img/Marandu.png">
+  <img src="img/Temiandu.png">
+  <img src="img/Nodo.png">
+</section>
+
+<!-- FORM -->
+<section class="lead-form" id="formulario">
+
+  <h2>Dejanos tus datos</h2>
+
+  <form id="form">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellido" placeholder="Apellido" required>
+    <input type="email" name="mail" placeholder="Email" required>
+    <input type="text" name="telefono" placeholder="Teléfono" required>
+
+    <button type="submit">Quiero empezar</button>
+  </form>
+
+  <p id="mensaje"></p>
+
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/595981657533?text=Hola%20Kakuaa,%20quiero%20automatizar%20mi%20negocio" target="_blank" class="whatsapp">
+💬
+</a>
+
+<!-- SCRIPT -->
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const data = {
+    nombre: this.nombre.value,
+    apellido: this.apellido.value,
+    mail: this.mail.value,
+    telefono: this.telefono.value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbyNVF8qErCrLisxXUnZkZqahyhumWYP-qVIKoPDTymS_OhU2PA41s5mEM3zCESzT0rC/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    document.getElementById("mensaje").innerText = "✅ Gracias, te contactamos";
+    document.getElementById("form").reset();
+  })
+  .catch(() => {
+    document.getElementById("mensaje").innerText = "❌ Error al enviar";
+  });
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kakuaa</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f5f7fa;
+  color:#1A237E;
+  text-align:center;
+}
+
+/* HERO */
+.hero{
+  padding:80px 20px;
+}
+
+.hero h1{
+  font-size:48px;
+}
+
+.hero span{
+  color:#2ECC71;
+}
+
+.hero p{
+  font-size:20px;
+  color:#546E7A;
+}
+
+.precio{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  display:inline-block;
+  margin-top:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.precio strong{
+  font-size:32px;
+  color:#2ECC71;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  background:#2ECC71;
+  color:white;
+  padding:15px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* FORM */
+.lead-form{
+  margin-top:80px;
+}
+
+.lead-form input{
+  display:block;
+  margin:10px auto;
+  padding:12px;
+  width:250px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.lead-form button{
+  background:#2ECC71;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+#mensaje{
+  margin-top:10px;
+}
+
+/* ICONOS */
+.features{
+  margin-top:60px;
+}
+
+.features img{
+  width:60px;
+  margin:20px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:24px;
+  text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Crecé con <span>Kakuaa</span></h1>
+
+  <p>
+    Automatización, datos e inteligencia artificial  
+    para que tu negocio crezca sin fricción
+  </p>
+
+  <div class="precio">
+    <h2>Desde <strong>₲700.000</strong></h2>
+    <p>/ mes</p>
+  </div>
+
+  <a href="#formulario" class="btn">Empezar ahora</a>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <img src="img/Nemura.png">
+  <img src="img/Marandu.png">
+  <img src="img/Temiandu.png">
+  <img src="img/Nodo.png">
+</section>
+
+<!-- FORM -->
+<section class="lead-form" id="formulario">
+
+  <h2>Dejanos tus datos</h2>
+
+  <form id="form">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellido" placeholder="Apellido" required>
+    <input type="email" name="mail" placeholder="Email" required>
+    <input type="text" name="telefono" placeholder="Teléfono" required>
+
+    <button type="submit">Quiero empezar</button>
+  </form>
+
+  <p id="mensaje"></p>
+
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/595981657533?text=Hola%20Kakuaa,%20quiero%20automatizar%20mi%20negocio" target="_blank" class="whatsapp">
 💬
 </a>
 
