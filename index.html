@@ -24,7 +24,6 @@ body{
 
 .hero h1{
   font-size:48px;
-  margin-bottom:10px;
 }
 
 .hero span{
@@ -34,6 +33,8 @@ body{
 .hero p{
   font-size:18px;
   color:#546E7A;
+  max-width:600px;
+  margin:auto;
 }
 
 .precio{
@@ -61,31 +62,42 @@ body{
   font-weight:700;
 }
 
-/* FEATURES */
-.features{
+/* INFO */
+.info{
   text-align:center;
-  padding:50px 20px;
+  padding:60px 20px;
 }
 
-.features img{
-  width:70px;
-  margin:20px;
-  transition:.3s;
+.info h2{
+  margin-bottom:15px;
 }
 
-.features img:hover{
-  transform:scale(1.1);
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  margin-top:30px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  width:250px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.card img{
+  width:60px;
+  margin-bottom:10px;
 }
 
 /* FORM */
-.lead-section{
+.lead{
   text-align:center;
   padding:60px 20px;
-  background:#ffffff;
-}
-
-.lead-section h2{
-  margin-bottom:20px;
+  background:white;
 }
 
 #form input{
@@ -104,12 +116,10 @@ body{
   padding:12px 25px;
   border-radius:25px;
   cursor:pointer;
-  margin-top:10px;
 }
 
 #mensaje{
   margin-top:15px;
-  font-weight:600;
 }
 
 /* WHATSAPP */
@@ -129,7 +139,6 @@ body{
   text-decoration:none;
 }
 </style>
-
 </head>
 
 <body>
@@ -139,8 +148,8 @@ body{
   <h1>Crecé con <span>Kakuaa</span></h1>
 
   <p>
-    Automatizá tu negocio, tomá mejores decisiones con datos  
-    y escalá con inteligencia artificial — sin equipo técnico
+    Automatizá procesos, tomá decisiones con datos  
+    y escalá tu negocio sin contratar más gente.
   </p>
 
   <div class="precio">
@@ -151,28 +160,51 @@ body{
   <a href="#formulario" class="btn">Empezar ahora</a>
 </section>
 
-<!-- FEATURES -->
-<section class="features">
-  <img src="https://ogues1.github.io/img/Nemura.png">
-  <img src="https://ogues1.github.io/img/Marandu.png">
-  <img src="https://ogues1.github.io/img/Temiandu.png">
-  <img src="https://ogues1.github.io/img/Nodo.png">
+<!-- VALOR -->
+<section class="info">
+
+  <h2>¿Qué hace Kakuaa?</h2>
+
+  <p>
+    Kakuaa automatiza tareas repetitivas, analiza tus datos  
+    y aplica inteligencia artificial para que tu negocio crezca más rápido.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="https://ogues1.github.io/img/Nemura.png">
+      <h3>Automatización</h3>
+      <p>Eliminá tareas manuales y ahorrá tiempo todos los días.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://ogues1.github.io/img/Marandu.png">
+      <h3>Datos</h3>
+      <p>Convertí información en decisiones claras.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://ogues1.github.io/img/Temiandu.png">
+      <h3>IA</h3>
+      <p>Agentes inteligentes que trabajan por vos 24/7.</p>
+    </div>
+
+  </div>
+
 </section>
 
-<!-- FORMULARIO -->
-<section class="lead-section" id="formulario">
+<!-- FORM -->
+<section class="lead" id="formulario">
 
-  <h2>Dejanos tus datos</h2>
+  <h2>Empezá hoy</h2>
 
   <form id="form">
-
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="text" name="apellido" placeholder="Apellido" required>
-    <input type="email" name="mail" placeholder="Email" required>
-    <input type="text" name="telefono" placeholder="Teléfono" required>
-
+    <input name="nombre" placeholder="Nombre" required>
+    <input name="apellido" placeholder="Apellido" required>
+    <input name="mail" placeholder="Email" required>
+    <input name="telefono" placeholder="Teléfono" required>
     <button type="submit">Quiero empezar</button>
-
   </form>
 
   <p id="mensaje"></p>
@@ -180,11 +212,8 @@ body{
 </section>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/595981123456?text=Hola%20Kakuaa,%20quiero%20automatizar%20mi%20negocio" target="_blank" class="whatsapp">
-💬
-</a>
+<a href="https://wa.me/595981123456?text=Hola%20quiero%20información%20sobre%20Kakuaa" class="whatsapp">💬</a>
 
-<!-- SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -193,11 +222,9 @@ document.addEventListener("DOMContentLoaded", function(){
   form.addEventListener("submit", function(e){
     e.preventDefault();
 
-    // 🔥 UX INMEDIATA
     form.style.display = "none";
 
-    document.getElementById("mensaje").innerText =
-      "⏳ Enviando datos...";
+    document.getElementById("mensaje").innerText = "Enviando...";
 
     const data = {
       nombre: form.nombre.value,
@@ -212,11 +239,7 @@ document.addEventListener("DOMContentLoaded", function(){
     })
     .then(() => {
       document.getElementById("mensaje").innerText =
-        "✅ Gracias, ya recibimos tus datos. Te contactamos pronto.";
-    })
-    .catch(() => {
-      document.getElementById("mensaje").innerText =
-        "❌ Error al enviar. Intentá nuevamente.";
+        "✅ Te contactamos en breve";
     });
 
   });
