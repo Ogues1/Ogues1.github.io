@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kakuaa — Crecimiento inteligente</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --verde:#2ECC71;
+  --azul:#1A237E;
+  --amarillo:#FDD835;
+  --gris:#ECEFF1;
+  --texto:#1A237E;
+}
+
+body{
+  margin:0;
+  font-family:'Open Sans',sans-serif;
+  color:var(--texto);
+  background:#fff;
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+}
+
+.logo{
+  height:40px;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:4rem 1.5rem;
+  background:linear-gradient(135deg,#ffffff,#ECEFF1);
+}
+
+.hero h1{
+  font-size:clamp(2.2rem,5vw,3rem);
+  font-weight:800;
+  margin-bottom:1rem;
+}
+
+.hero h1 span{
+  color:var(--verde);
+}
+
+.subtitle{
+  max-width:580px;
+  margin:auto;
+  color:#546E7A;
+  font-size:1.1rem;
+  margin-bottom:2rem;
+}
+
+/* PRECIO */
+.price-box{
+  background:#fff;
+  border-radius:12px;
+  padding:1.5rem 2rem;
+  display:inline-block;
+  margin-bottom:2rem;
+  box-shadow:0 6px 25px rgba(0,0,0,0.05);
+}
+
+.price{
+  font-size:2.3rem;
+  font-weight:800;
+}
+
+.price span{
+  color:var(--verde);
+}
+
+/* BOTON */
+.btn{
+  display:inline-block;
+  background:var(--verde);
+  color:#fff;
+  padding:0.9rem 2rem;
+  border-radius:50px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:var(--azul);
+}
+
+/* FEATURES */
+.features{
+  padding:3rem 1rem;
+  text-align:center;
+}
+
+.features h2{
+  font-size:1.8rem;
+  margin-bottom:2rem;
+}
+
+.feature-grid{
+  display:flex;
+  justify-content:center;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+
+.feature{
+  max-width:200px;
+}
+
+.feature img{
+  width:70px;
+  margin-bottom:0.7rem;
+}
+
+.feature h3{
+  font-size:1rem;
+  margin-bottom:0.3rem;
+}
+
+.feature p{
+  font-size:0.9rem;
+  color:#546E7A;
+}
+
+/* AUDIENCIA */
+.audience{
+  background:var(--gris);
+  padding:3rem 1rem;
+  text-align:center;
+}
+
+.audience h2{
+  margin-bottom:2rem;
+}
+
+.audience-grid{
+  display:flex;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.audience-item{
+  background:#fff;
+  padding:1rem 1.5rem;
+  border-radius:10px;
+  font-size:0.9rem;
+}
+
+/* CTA FINAL */
+.cta{
+  text-align:center;
+  padding:3rem 1rem;
+}
+
+.cta h2{
+  margin-bottom:1rem;
+}
+
+.footer{
+  text-align:center;
+  padding:2rem;
+  font-size:0.8rem;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <img src="https://ogues1.github.io/img/Kakuaa.jpg" class="logo">
+  <a href="#" class="btn">Empezar</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+  <h1>
+    Crecé con <span>Kakuaa</span>
+  </h1>
+
+  <p class="subtitle">
+    Automatización, datos e inteligencia artificial para que tu negocio crezca sin fricción.
+  </p>
+
+  <div class="price-box">
+    <div class="price">Desde <span>₲700.000</span></div>
+    <div style="font-size:0.85rem;color:#777;">/ mes</div>
+  </div>
+
+  <br>
+
+  <a href="#" class="btn">Empezar ahora</a>
+
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+
+  <h2>Todo lo que necesitás para crecer</h2>
+
+  <div class="feature-grid">
+
+    <div class="feature">
+      <img src="https://ogues1.github.io/img/Nemura.png">
+      <h3>Automatización</h3>
+      <p>Procesos que se ejecutan solos</p>
+    </div>
+
+    <div class="feature">
+      <img src="https://ogues1.github.io/img/Marandu.png">
+      <h3>Ciencia de datos</h3>
+      <p>Decisiones basadas en información</p>
+    </div>
+
+    <div class="feature">
+      <img src="https://ogues1.github.io/img/Temiandu.png">
+      <h3>Agentes de IA</h3>
+      <p>Asistentes inteligentes</p>
+    </div>
+
+    <div class="feature">
+      <img src="https://ogues1.github.io/img/Nodo.png">
+      <h3>Crecimiento continuo</h3>
+      <p>Evolución constante</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- AUDIENCIA -->
+<section class="audience">
+
+  <h2>Hecho para vos</h2>
+
+  <div class="audience-grid">
+    <div class="audience-item">Empresas</div>
+    <div class="audience-item">Startups</div>
+    <div class="audience-item">Pymes</div>
+    <div class="audience-item">Freelancers</div>
+  </div>
+
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta">
+
+  <h2>Tu crecimiento empieza hoy</h2>
+
+  <a href="#" class="btn">Empezar ahora</a>
+
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  Kakuaa — Crecimiento y desarrollo
+</div>
+
+</body>
+</html>
