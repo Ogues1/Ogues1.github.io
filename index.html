@@ -164,18 +164,16 @@ body{
 
   <h2>Dejanos tus datos</h2>
 
-  <div id="form-container">
-    <form id="form">
+  <form id="form">
 
-      <input type="text" name="nombre" placeholder="Nombre" required>
-      <input type="text" name="apellido" placeholder="Apellido" required>
-      <input type="email" name="mail" placeholder="Email" required>
-      <input type="text" name="telefono" placeholder="Teléfono" required>
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellido" placeholder="Apellido" required>
+    <input type="email" name="mail" placeholder="Email" required>
+    <input type="text" name="telefono" placeholder="Teléfono" required>
 
-      <button type="submit">Quiero empezar</button>
+    <button type="submit">Quiero empezar</button>
 
-    </form>
-  </div>
+  </form>
 
   <p id="mensaje"></p>
 
@@ -188,34 +186,41 @@ body{
 
 <!-- SCRIPT -->
 <script>
-document.getElementById("form").addEventListener("submit", function(e){
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function(){
 
-  const form = this;
+  const form = document.getElementById("form");
 
-  const data = {
-    nombre: form.nombre.value,
-    apellido: form.apellido.value,
-    mail: form.mail.value,
-    telefono: form.telefono.value
-  };
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
 
-  fetch("https://script.google.com/macros/s/AKfycbyNVF8qErCrLisxXUnZkZqahyhumWYP-qVIKoPDTymS_OhU2PA41s5mEM3zCESzT0rC/exec", {
-    method: "POST",
-    body: JSON.stringify(data)
-  })
-  .then(() => {
-
-    document.getElementById("form-container").style.display = "none";
+    // 🔥 UX INMEDIATA
+    form.style.display = "none";
 
     document.getElementById("mensaje").innerText =
-      "✅ Gracias, ya recibimos tus datos. Te contactamos pronto.";
+      "⏳ Enviando datos...";
 
-  })
-  .catch(() => {
-    document.getElementById("mensaje").innerText =
-      "❌ Error al enviar, intenta nuevamente.";
+    const data = {
+      nombre: form.nombre.value,
+      apellido: form.apellido.value,
+      mail: form.mail.value,
+      telefono: form.telefono.value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbyNVF8qErCrLisxXUnZkZqahyhumWYP-qVIKoPDTymS_OhU2PA41s5mEM3zCESzT0rC/exec", {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(() => {
+      document.getElementById("mensaje").innerText =
+        "✅ Gracias, ya recibimos tus datos. Te contactamos pronto.";
+    })
+    .catch(() => {
+      document.getElementById("mensaje").innerText =
+        "❌ Error al enviar. Intentá nuevamente.";
+    });
+
   });
+
 });
 </script>
 
