@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KAKUAA — Automatización inteligente para tu negocio: OCR, validación de datos, integración ERP/CRM. Del Guaraní: Crecimiento y Desarrollo. Para empresas, pymes, startups y emprendedores en Paraguay." />
+  <meta name="keywords" content="KAKUAA, automatización, automatización de procesos, OCR, reconocimiento óptico, validación de datos, integración ERP, integración CRM, inteligencia artificial, IA, ciencia de datos, pymes, startups, emprendedores, Paraguay, Guaraní, crecimiento" />
+  <meta name="author" content="KAKUAA" />
+  <meta property="og:title" content="KAKUAA — Automatización inteligente para tu negocio" />
+  <meta property="og:description" content="OCR, validación de datos e integración ERP/CRM accesibles para empresas, pymes y emprendedores. Creceremos juntos hacia Ciencia de Datos y Agentes de IA." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kakuaa.me/kakuaa_crecimiento.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KAKUAA — Automatización inteligente para tu negocio" />
+  <meta name="twitter:description" content="OCR, validación de datos, integración ERP/CRM. Creceremos juntos hacia Ciencia de Datos y Agentes de IA." />
+  <title>KAKUAA — Automatización inteligente para tu negocio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== VARIABLES Y RESET ===== */
+    :root {
+      --color-primary:   #2ECC71;
+      --color-secondary: #1A237E;
+      --color-accent:    #F1C40F;
+      --color-warm:      #F1C40F;
+      --color-bg:        #ECEFF1;
+      --color-surface:   #FFFFFF;
+      --color-text:      #1A237E;
+      --color-muted:     #546E7A;
+      --color-border:    #CFD8DC;
+      --radius:          12px;
+      --shadow-sm:       0 1px 3px rgba(0,0,0,.08);
+      --shadow-md:       0 4px 16px rgba(0,0,0,.10);
+      --shadow-lg:       0 8px 32px rgba(0,0,0,.12);
+      --max-width:       1200px;
+      --transition:      0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Roboto', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.65;
+      font-size: 1rem;
+      padding-top: 68px; /* offset for fixed navbar */
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: var(--color-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: var(--max-width);
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
+
+    /* ===== SKIP LINK ===== */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary);
+      color: #fff;
+      padding: .5rem 1rem;
+      z-index: 9999;
+      border-radius: 0 0 var(--radius) 0;
+      transition: top var(--transition);
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      transition: background 0.35s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: .9rem;
+    }
+
+    .navbar__logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      letter-spacing: -.5px;
+    }
+
+    .navbar__logo span {
+      color: var(--color-accent);
+    }
+
+    .navbar__nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .navbar__nav a {
+      font-weight: 500;
+      color: var(--color-text);
+      transition: color var(--transition);
+    }
+
+    .navbar__nav a:hover { color: var(--color-primary); text-decoration: none; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .55rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--color-secondary);
+      text-decoration: none;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .btn-outline:hover {
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .btn-accent {
+      background: var(--color-accent);
+      color: #fff;
+    }
+    .btn-accent:hover {
+      background: #D4AC0D;
+      text-decoration: none;
+    }
+
+    .btn-lg { padding: .8rem 2rem; font-size: 1rem; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #e9faf2 0%, #ECEFF1 100%);
+      padding-block: 5rem 4rem;
+      text-align: center;
+    }
+
+    .hero__badge {
+      display: inline-block;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .3rem .85rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 820px;
+      margin-inline: auto;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__title em {
+      font-style: normal;
+      color: var(--color-primary);
+    }
+
+    .hero__subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--color-muted);
+      max-width: 640px;
+      margin-inline: auto;
+      margin-bottom: 2rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero__tagline {
+      font-size: .9rem;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+
+    .hero__tagline strong {
+      color: var(--color-text);
+      font-style: normal;
+    }
+
+    /* ===== SECTIONS COMMON ===== */
+    section { padding-block: 4rem; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header__eyebrow {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: .5rem;
+    }
+
+    .section-header__title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: .75rem;
+    }
+
+    .section-header__desc {
+      color: var(--color-muted);
+      max-width: 640px;
+      margin-inline: auto;
+      font-size: 1.05rem;
+    }
+
+    /* ===== PARA TODOS ===== */
+    .para-todos {
+      background: var(--color-surface);
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .audience-card {
+      text-align: center;
+      padding: 2rem 1.25rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .audience-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .audience-card__icon {
+      font-size: 2.5rem;
+      margin-bottom: .75rem;
+      line-height: 1;
+    }
+
+    .audience-card__title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: .4rem;
+    }
+
+    .audience-card__desc {
+      font-size: .88rem;
+      color: var(--color-muted);
+    }
+
+    /* ===== SERVICIOS ===== */
+    .servicios {
+      background: var(--color-bg);
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .servicio-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .servicio-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .servicio-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .icon-bg-blue  { background: #e8eaf6; }
+    .icon-bg-green { background: #e9faf2; }
+    .icon-bg-amber { background: #fef9e7; }
+
+    .servicio-card__title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+    }
+
+    .servicio-card__desc {
+      color: var(--color-muted);
+      font-size: .95rem;
+      margin-bottom: 1rem;
+    }
+
+    .servicio-card__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+
+    .servicio-card__list li {
+      font-size: .9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+    }
+
+    .servicio-card__list li::before {
+      content: "✓";
+      color: var(--color-accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: .05rem;
+    }
+
+    /* ===== CASOS DE USO ===== */
+    .casos {
+      background: var(--color-surface);
+    }
+
+    .casos-tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .tab-btn {
+      padding: .5rem 1.2rem;
+      border: 2px solid var(--color-border);
+      border-radius: 999px;
+      background: transparent;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--color-muted);
+      transition: all var(--transition);
+    }
+
+    .tab-btn:hover,
+    .tab-btn[aria-selected="true"] {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: #e9faf2;
+    }
+
+    .casos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .caso-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: box-shadow var(--transition);
+    }
+
+    .caso-card:hover { box-shadow: var(--shadow-md); }
+
+    .caso-card__tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .2rem .6rem;
+      border-radius: 999px;
+      margin-bottom: .75rem;
+    }
+
+    .tag-empresa   { background: #e8eaf6; color: #1A237E; }
+    .tag-persona   { background: #e9faf2; color: #27AE60; }
+    .tag-startup   { background: #fef9e7; color: #7D6608; }
+
+    .caso-card__title {
+      font-weight: 700;
+      margin-bottom: .4rem;
+      font-size: 1rem;
+    }
+
+    .caso-card__desc {
+      font-size: .9rem;
+      color: var(--color-muted);
+      margin-bottom: .75rem;
+    }
+
+    .caso-card__result {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+
+    /* ===== PARA EMPRESAS & EMPRENDEDORES ===== */
+    .segmentos {
+      background: var(--color-bg);
+    }
+
+    .segmentos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+
+    .segmento-card {
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .segmento-card--empresas {
+      background: linear-gradient(135deg, #1A237E, #283593);
+      color: #fff;
+    }
+
+    .segmento-card--personas {
+      background: linear-gradient(135deg, #2ECC71, #27AE60);
+      color: #fff;
+    }
+
+    .segmento-card__eyebrow {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      opacity: .85;
+      margin-bottom: .5rem;
+    }
+
+    .segmento-card__title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .segmento-card__desc {
+      opacity: .9;
+      font-size: .97rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .segmento-card__features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      margin-bottom: 2rem;
+    }
+
+    .segmento-card__features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .93rem;
+      opacity: .95;
+    }
+
+    .segmento-card__features li::before {
+      content: "✓";
+      font-weight: 800;
+      flex-shrink: 0;
+      opacity: 1;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--color-secondary);
+      font-weight: 700;
+    }
+
+    .btn-white-green {
+      background: #fff;
+      color: var(--color-secondary);
+      font-weight: 700;
+    }
+
+    .btn-white:hover, .btn-white-green:hover {
+      opacity: .9;
+      text-decoration: none;
+    }
+
+    /* ===== PLANES / PRECIOS ===== */
+    .planes {
+      background: var(--color-surface);
+    }
+
+    .planes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    .plan-card {
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      background: var(--color-bg);
+      position: relative;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .plan-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .plan-card--featured {
+      border-color: var(--color-primary);
+      background: #e9faf2;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .plan-card__badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-primary);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .25rem .8rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .plan-card__name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: .3rem;
+      color: var(--color-text);
+    }
+
+    .plan-card__audience {
+      font-size: .83rem;
+      color: var(--color-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .plan-card__price {
+      display: flex;
+      align-items: baseline;
+      gap: .25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-card__price .currency {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-muted);
+    }
+
+    .plan-card__price .amount {
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--color-text);
+    }
+
+    .plan-card__price .period {
+      font-size: .85rem;
+      color: var(--color-muted);
+    }
+
+    .plan-card__price .custom {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text);
+    }
+
+    .plan-card__features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .plan-card__features li {
+      font-size: .9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      color: var(--color-text);
+    }
+
+    .plan-card__features li .check {
+      color: var(--color-accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .plan-card__features li .cross {
+      color: #90A4AE;
+      flex-shrink: 0;
+    }
+
+    .plan-card__cta {
+      width: 100%;
+      text-align: center;
+      border-radius: var(--radius);
+      padding: .75rem;
+      font-weight: 700;
+      font-size: .95rem;
+      display: block;
+    }
+
+    .plan-card__note {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--color-muted);
+      margin-top: .75rem;
+    }
+
+    /* Vertical-category separators inside plan feature lists */
+    .plan-card__vertical {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--color-secondary);
+      padding-top: .75rem;
+      margin-top: .25rem;
+      border-top: 1px solid var(--color-border);
+      list-style: none;
+    }
+
+    .plan-card__vertical:first-child {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: none;
+    }
+
+    /* ===== PROCESO ===== */
+    .proceso {
+      background: var(--color-bg);
+    }
+
+    .proceso-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 2rem;
+      position: relative;
+    }
+
+    .paso {
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+
+    .paso__num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline: auto;
+      margin-bottom: 1rem;
+    }
+
+    .paso__title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: .4rem;
+    }
+
+    .paso__desc {
+      font-size: .9rem;
+      color: var(--color-muted);
+    }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final {
+      background: linear-gradient(135deg, #1A237E, #2ECC71);
+      color: #fff;
+      text-align: center;
+      padding-block: 5rem;
+    }
+
+    .cta-final__title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      max-width: 700px;
+      margin-inline: auto;
+      margin-bottom: 1rem;
+    }
+
+    .cta-final__desc {
+      opacity: .9;
+      max-width: 520px;
+      margin-inline: auto;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .cta-final__actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white-solid {
+      background: #fff;
+      color: var(--color-secondary);
+      font-weight: 700;
+    }
+
+    .btn-white-solid:hover {
+      background: #f0f0f0;
+      text-decoration: none;
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,.7);
+      color: #fff;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,.15);
+      text-decoration: none;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #1A237E;
+      color: #CFD8DC;
+      padding-block: 2.5rem;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    .footer__brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: .4rem;
+    }
+
+    .footer__tagline {
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer__links a {
+      color: #CFD8DC;
+      font-size: .9rem;
+      transition: color var(--transition);
+    }
+
+    .footer__links a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer__copy { font-size: .82rem; }
+
+    /* ===== PRÓXIMAMENTE ===== */
+    .proximamente {
+      background: var(--color-secondary);
+      color: #fff;
+    }
+
+    .proximamente .section-header__eyebrow {
+      color: var(--color-accent);
+    }
+
+    .proximamente .section-header__title,
+    .proximamente .section-header__desc {
+      color: #fff;
+    }
+
+    .proximamente .section-header__desc {
+      opacity: .85;
+    }
+
+    .prox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .prox-card {
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .prox-card:hover {
+      background: rgba(255, 255, 255, .14);
+      transform: translateY(-4px);
+    }
+
+    .prox-card__icon {
+      font-size: 2.2rem;
+      margin-bottom: .9rem;
+      line-height: 1;
+    }
+
+    .prox-card__label {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--color-accent);
+      color: var(--color-secondary);
+      padding: .2rem .65rem;
+      border-radius: 999px;
+      margin-bottom: .75rem;
+    }
+
+    .prox-card__title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+      color: #fff;
+    }
+
+    .prox-card__desc {
+      font-size: .9rem;
+      opacity: .8;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .prox-card__features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+
+    .prox-card__features li {
+      font-size: .88rem;
+      opacity: .85;
+      display: flex;
+      align-items: flex-start;
+      gap: .45rem;
+    }
+
+    .prox-card__features li::before {
+      content: "→";
+      color: var(--color-accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .navbar__nav { display: none; }
+      .hero { padding-block: 3.5rem 3rem; }
+      .segmentos-grid { grid-template-columns: 1fr; }
+      .planes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ===== NAVBAR ===== -->
+  <header role="banner">
+    <nav class="navbar" aria-label="Navegación principal">
+      <div class="container navbar__inner">
+        <a href="#" class="navbar__logo" aria-label="KAKUAA — Inicio">
+          KAKUAA<span>.</span>
+        </a>
+        <ul class="navbar__nav" role="list">
+          <li><a href="#para-todos">Para Todos</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#casos">Casos de Uso</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="#proximamente">Próximamente</a></li>
+          <li><a href="#contacto" class="btn btn-primary">Empieza Gratis</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main id="main">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <p class="hero__badge">KAKUAA — Del Guaraní: Crecimiento y Desarrollo</p>
+        <h1 class="hero__title" id="hero-title">
+          Automatización inteligente<br />
+          para tu <em>negocio</em>
+        </h1>
+        <p class="hero__subtitle">
+          Empieza a automatizar hoy: OCR, validación de datos, integración con ERP y CRM.
+          De acá a un año, creceremos juntos hacia Ciencia de Datos y Agentes de IA.
+        </p>
+        <div class="hero__actions">
+          <a href="#planes" class="btn btn-primary btn-lg">Ver Planes</a>
+          <a href="#casos" class="btn btn-outline btn-lg">Ver Ejemplos</a>
+        </div>
+        <p class="hero__tagline">
+          <strong>KAKUAA</strong> viene del Guaraní y significa
+          <strong>&ldquo;Crecimiento y Desarrollo&rdquo;</strong> &mdash;
+          exactamente lo que queremos para ti.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== PARA TODOS ===== -->
+    <section class="para-todos" id="para-todos" aria-labelledby="para-todos-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Para Todos</span>
+          <h2 class="section-header__title" id="para-todos-title">
+            Hecho para ti, hagas lo que hagas
+          </h2>
+          <p class="section-header__desc">
+            No importa si eres una empresa consolidada, una startup en despegue
+            o un profesional que trabaja solo. KAKUAA se adapta a tu realidad.
+          </p>
+        </div>
+        <ul class="audience-grid" role="list">
+          <li>
+            <article class="audience-card">
+              <div class="audience-card__icon" aria-hidden="true">🏢</div>
+              <h3 class="audience-card__title">Empresas</h3>
+              <p class="audience-card__desc">
+                Escala operaciones, automatiza procesos complejos e integra IA en tu core de negocio.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="audience-card">
+              <div class="audience-card__icon" aria-hidden="true">🚀</div>
+              <h3 class="audience-card__title">Startups</h3>
+              <p class="audience-card__desc">
+                Lanza rápido, itera más rápido. Potencia tu producto con automatización desde el día uno.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="audience-card">
+              <div class="audience-card__icon" aria-hidden="true">🏪</div>
+              <h3 class="audience-card__title">Pymes</h3>
+              <p class="audience-card__desc">
+                Compite con los grandes sin necesitar un equipo enorme ni un presupuesto millonario.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="audience-card">
+              <div class="audience-card__icon" aria-hidden="true">💡</div>
+              <h3 class="audience-card__title">Emprendedores</h3>
+              <p class="audience-card__desc">
+                Convierte tu idea en realidad más rápido. Deja que la IA haga el trabajo pesado.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="audience-card">
+              <div class="audience-card__icon" aria-hidden="true">🧑‍💻</div>
+              <h3 class="audience-card__title">Profesionales Independientes</h3>
+              <p class="audience-card__desc">
+                Multiplica tu productividad y ofrece servicios de mayor valor sin trabajar más horas.
+              </p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== SERVICIOS ===== -->
+    <section class="servicios" id="servicios" aria-labelledby="servicios-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Nuestros Servicios</span>
+          <h2 class="section-header__title" id="servicios-title">
+            Tres superpoderes a tu disposición
+          </h2>
+          <p class="section-header__desc">
+            Sin tecnicismos innecesarios. Aquí te explicamos qué hace cada servicio y cómo puede ayudarte hoy.
+          </p>
+        </div>
+        <div class="servicios-grid">
+
+          <article class="servicio-card">
+            <div class="servicio-card__icon icon-bg-blue" aria-hidden="true">⚡</div>
+            <h3 class="servicio-card__title">Automatización Inteligente</h3>
+            <p class="servicio-card__desc">
+              ¿Cansado de hacer lo mismo una y otra vez? La automatización toma esas tareas repetitivas
+              y las ejecuta sola, sin errores y sin descanso.
+            </p>
+            <ul class="servicio-card__list" aria-label="Lo que puedes automatizar">
+              <li>Respuestas automáticas a clientes</li>
+              <li>Envío de reportes y facturas</li>
+              <li>Publicaciones en redes sociales</li>
+              <li>Seguimiento de pedidos o proyectos</li>
+            </ul>
+          </article>
+
+          <article class="servicio-card">
+            <div class="servicio-card__icon icon-bg-green" aria-hidden="true">📊</div>
+            <h3 class="servicio-card__title">Ciencia de Datos</h3>
+            <p class="servicio-card__desc">
+              Tus datos hablan, pero ¿los estás escuchando? Te ayudamos a transformar
+              números en decisiones claras y accionables.
+            </p>
+            <ul class="servicio-card__list" aria-label="Qué incluye la ciencia de datos">
+              <li>Dashboards fáciles de leer</li>
+              <li>Predicción de ventas y tendencias</li>
+              <li>Análisis de comportamiento de clientes</li>
+              <li>Reportes automáticos semanales</li>
+            </ul>
+          </article>
+
+          <article class="servicio-card">
+            <div class="servicio-card__icon icon-bg-amber" aria-hidden="true">🤖</div>
+            <h3 class="servicio-card__title">Agentes de IA</h3>
+            <p class="servicio-card__desc">
+              Imagina tener un asistente que nunca duerme, aprende de cada conversación
+              y resuelve problemas de forma autónoma. Eso son los Agentes de IA.
+            </p>
+            <ul class="servicio-card__list" aria-label="Lo que hacen los Agentes de IA">
+              <li>Atención al cliente 24/7</li>
+              <li>Asistente para tu equipo interno</li>
+              <li>Generación de contenido personalizado</li>
+              <li>Búsqueda y análisis de información</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CASOS DE USO ===== -->
+    <section class="casos" id="casos" aria-labelledby="casos-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Casos de Uso</span>
+          <h2 class="section-header__title" id="casos-title">
+            Gente real, resultados reales
+          </h2>
+          <p class="section-header__desc">
+            No solo grandes corporaciones. Así es como distintas personas usan KAKUAA en su día a día.
+          </p>
+        </div>
+
+        <div class="casos-tabs" role="tablist" aria-label="Filtrar por tipo de usuario">
+          <button class="tab-btn" role="tab" aria-selected="true" data-filter="all">Todos</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-filter="empresa">Empresas</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-filter="persona">Personas / Freelancers</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-filter="startup">Startups</button>
+        </div>
+
+        <div class="casos-grid">
+
+          <article class="caso-card">
+            <span class="caso-card__tag tag-persona">Freelancer</span>
+            <h3 class="caso-card__title">Diseñador freelance que gestiona 8 clientes</h3>
+            <p class="caso-card__desc">
+              Andrés automatizó sus contratos, recordatorios de pago y actualizaciones
+              de proyecto. Ahora pasa más tiempo diseñando y menos en papelería.
+            </p>
+            <p class="caso-card__result">
+              <span aria-hidden="true">📈</span>
+              Ahorra 10 horas a la semana
+            </p>
+          </article>
+
+          <article class="caso-card">
+            <span class="caso-card__tag tag-persona">Pequeño Negocio</span>
+            <h3 class="caso-card__title">Panadería local con pedidos online</h3>
+            <p class="caso-card__desc">
+              María configuró un agente de IA que responde consultas en WhatsApp,
+              toma pedidos y envía confirmaciones automáticas.
+            </p>
+            <p class="caso-card__result">
+              <span aria-hidden="true">📈</span>
+              +40% pedidos sin contratar personal extra
+            </p>
+          </article>
+
+          <article class="caso-card">
+            <span class="caso-card__tag tag-persona">Creador de Contenido</span>
+            <h3 class="caso-card__title">Creadora de contenido con 50k seguidores</h3>
+            <p class="caso-card__desc">
+              Lucía usa un agente de IA para generar ideas, adaptar contenido
+              a cada red social y programar publicaciones con un solo clic.
+            </p>
+            <p class="caso-card__result">
+              <span aria-hidden="true">📈</span>
+              Publica 3x más sin quemarse
+            </p>
+          </article>
+
+          <article class="caso-card">
+            <span class="caso-card__tag tag-startup">Startup</span>
+            <h3 class="caso-card__title">App de delivery en fase de lanzamiento</h3>
+            <p class="caso-card__desc">
+              El equipo de 4 personas automatizó el onboarding de restaurantes,
+              análisis de métricas y soporte inicial para concentrarse en crecer.
+            </p>
+            <p class="caso-card__result">
+              <span aria-hidden="true">📈</span>
+              De 10 a 200 restaurantes en 3 meses
+            </p>
+          </article>
+
+          <article class="caso-card">
+            <span class="caso-card__tag tag-empresa">Empresa — Marketing</span>
+            <h3 class="caso-card__title">Agencia de marketing digital</h3>
+            <p class="caso-card__desc">
+              Integración de ciencia de datos para personalizar campañas
+              y optimizar presupuesto publicitario en tiempo real.
+            </p>
+            <p class="caso-card__result">
+              <span aria-hidden="true">📈</span>
+              ROI de campañas mejoró un 35%
+            </p>
+          </article>
+
+          <article class="caso-card">
+            <span class="caso-card__tag tag-empresa">Empresa — Logística</span>
+            <h3 class="caso-card__title">Empresa logística con 200 rutas diarias</h3>
+            <p class="caso-card__desc">
+              Predicción de demanda y optimización de rutas con agentes de IA
+              que se adaptan al tráfico y condiciones climáticas.
+            </p>
+            <p class="caso-card__result">
+              <span aria-hidden="true">📈</span>
+              -22% en costos de combustible
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PARA EMPRESAS + PARA EMPRENDEDORES ===== -->
+    <section class="segmentos" id="segmentos" aria-labelledby="segmentos-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Enfocado en Ti</span>
+          <h2 class="section-header__title" id="segmentos-title">
+            Beneficios diseñados para tu realidad
+          </h2>
+          <p class="section-header__desc">
+            Cada segmento tiene sus propios desafíos. Por eso ofrecemos
+            una experiencia pensada específicamente para ti.
+          </p>
+        </div>
+        <div class="segmentos-grid">
+
+          <article class="segmento-card segmento-card--empresas" aria-labelledby="seg-empresas-title">
+            <p class="segmento-card__eyebrow">Para Empresas y Corporaciones</p>
+            <h3 class="segmento-card__title" id="seg-empresas-title">
+              Escala sin límites
+            </h3>
+            <p class="segmento-card__desc">
+              Integración profunda con tus sistemas actuales, SLAs garantizados,
+              soporte dedicado y arquitecturas a medida para procesar millones de operaciones.
+            </p>
+            <ul class="segmento-card__features" aria-label="Beneficios para empresas">
+              <li>Integraciones API con ERP, CRM y más</li>
+              <li>Panel de administración centralizado</li>
+              <li>Cumplimiento normativo y seguridad avanzada</li>
+              <li>Soporte 24/7 con SLA garantizado</li>
+              <li>Capacitación para tu equipo</li>
+            </ul>
+            <a href="#contacto" class="btn btn-white btn-lg">Hablar con un experto</a>
+          </article>
+
+          <article class="segmento-card segmento-card--personas" aria-labelledby="seg-personas-title">
+            <p class="segmento-card__eyebrow">Para Emprendedores y Freelancers</p>
+            <h3 class="segmento-card__title" id="seg-personas-title">
+              Tu primer equipo de IA
+            </h3>
+            <p class="segmento-card__desc">
+              Sin contratos complejos ni tecnicismos. Configuración en minutos,
+              resultados desde el primer día y precios que crecen con tu negocio.
+            </p>
+            <ul class="segmento-card__features" aria-label="Beneficios para emprendedores y freelancers">
+              <li>Configuración guiada paso a paso</li>
+              <li>Plantillas listas para usar</li>
+              <li>Pago mensual sin permanencia</li>
+              <li>Soporte por chat y video tutoriales</li>
+              <li>Escala cuando lo necesites</li>
+            </ul>
+            <a href="#planes" class="btn btn-white-green btn-lg">Ver plan Básico</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PLANES ===== -->
+    <section class="planes" id="planes" aria-labelledby="planes-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Planes y Tarifas</span>
+          <h2 class="section-header__title" id="planes-title">
+            Un precio para cada etapa
+          </h2>
+          <p class="section-header__desc">
+            Sin sorpresas. Sin letras chicas. Elige el plan que se ajuste a donde estás hoy
+            y cambia cuando estés listo para el siguiente nivel.
+          </p>
+        </div>
+        <div class="planes-grid">
+
+          <!-- BÁSICO -->
+          <article class="plan-card" aria-labelledby="plan-basico-title">
+            <h3 class="plan-card__name" id="plan-basico-title">Básico</h3>
+            <p class="plan-card__audience">Freelancers y Emprendedores que comienzan</p>
+            <div class="plan-card__price" aria-label="Precio: 750.000 guaraníes por mes">
+              <span class="currency">₲</span>
+              <span class="amount">750.000</span>
+              <span class="period">/ mes</span>
+            </div>
+            <ul class="plan-card__features" aria-label="Características del plan Básico">
+              <li class="plan-card__vertical">⚡ Automatización</li>
+              <li><span class="check" aria-hidden="true">✓</span> 500 automatizaciones/mes</li>
+              <li><span class="check" aria-hidden="true">✓</span> OCR básico (lectura de documentos)</li>
+              <li><span class="check" aria-hidden="true">✓</span> Validación de datos en formularios</li>
+              <li><span class="check" aria-hidden="true">✓</span> Plantillas de flujos listas para usar</li>
+              <li><span class="check" aria-hidden="true">✓</span> Notificaciones y alertas automáticas</li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Integración ERP/CRM</span></li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Flujos personalizados</span></li>
+            </ul>
+            <a href="#contacto" class="btn btn-outline plan-card__cta">Empezar Gratis</a>
+            <p class="plan-card__note">14 días de prueba gratis &middot; Sin tarjeta de crédito</p>
+          </article>
+
+          <!-- AVANZADO -->
+          <article class="plan-card plan-card--featured" aria-labelledby="plan-avanzado-title">
+            <div class="plan-card__badge">Más Popular</div>
+            <h3 class="plan-card__name" id="plan-avanzado-title">Avanzado</h3>
+            <p class="plan-card__audience">Pymes, Startups y Equipos en crecimiento</p>
+            <div class="plan-card__price" aria-label="Precio: 1.500.000 guaraníes por mes">
+              <span class="currency">₲</span>
+              <span class="amount">1.500.000</span>
+              <span class="period">/ mes</span>
+            </div>
+            <ul class="plan-card__features" aria-label="Características del plan Avanzado">
+              <li class="plan-card__vertical">⚡ Automatización</li>
+              <li><span class="check" aria-hidden="true">✓</span> Automatizaciones ilimitadas</li>
+              <li><span class="check" aria-hidden="true">✓</span> OCR avanzado con extracción de datos</li>
+              <li><span class="check" aria-hidden="true">✓</span> Validación y limpieza de datos avanzada</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integración con CRM (HubSpot, Salesforce)</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integración con ERP (SAP, Odoo)</li>
+              <li><span class="check" aria-hidden="true">✓</span> Flujos de trabajo personalizados</li>
+              <li><span class="cross" aria-hidden="true">✗</span> <span style="color: #90A4AE;">Arquitectura dedicada</span></li>
+            </ul>
+            <a href="#contacto" class="btn btn-primary plan-card__cta">Comenzar Ahora</a>
+            <p class="plan-card__note">14 días de prueba gratis</p>
+          </article>
+
+          <!-- PREMIUM -->
+          <article class="plan-card" aria-labelledby="plan-premium-title">
+            <h3 class="plan-card__name" id="plan-premium-title">Premium</h3>
+            <p class="plan-card__audience">Empresas y Corporaciones que requieren escala</p>
+            <div class="plan-card__price" aria-label="Precio: desde 3.500.000 guaraníes">
+              <span class="custom">Hablemos</span>
+            </div>
+            <ul class="plan-card__features" aria-label="Características del plan Premium">
+              <li class="plan-card__vertical">⚡ Automatización</li>
+              <li><span class="check" aria-hidden="true">✓</span> Automatizaciones y flujos ilimitados</li>
+              <li><span class="check" aria-hidden="true">✓</span> OCR a escala con modelos personalizados</li>
+              <li><span class="check" aria-hidden="true">✓</span> Pipeline de validación de datos a medida</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integración completa ERP/CRM/Legado</li>
+              <li><span class="check" aria-hidden="true">✓</span> Integración con Google Stitch</li>
+              <li><span class="check" aria-hidden="true">✓</span> SLA garantizado 99.9%</li>
+              <li><span class="check" aria-hidden="true">✓</span> Soporte 24/7 con gerente de cuenta</li>
+            </ul>
+            <a href="#contacto" class="btn btn-outline plan-card__cta">Solicitar Consulta</a>
+            <p class="plan-card__note">Desde ₲ 3.500.000 &middot; Consulta sin compromiso</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRÓXIMAMENTE ===== -->
+    <section class="proximamente" id="proximamente" aria-labelledby="prox-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Próximamente</span>
+          <h2 class="section-header__title" id="prox-title">
+            El camino que recorreremos juntos
+          </h2>
+          <p class="section-header__desc">
+            Hoy empezamos con Automatización. De acá a un año, KAKUAA evolucionará
+            contigo hacia Ciencia de Datos y Agentes de IA, sin que tengas que cambiar de plataforma.
+          </p>
+        </div>
+        <div class="prox-grid">
+
+          <article class="prox-card">
+            <div class="prox-card__icon" aria-hidden="true">📊</div>
+            <span class="prox-card__label">Año 1 — Q3/Q4</span>
+            <h3 class="prox-card__title">Ciencia de Datos</h3>
+            <p class="prox-card__desc">
+              Convierte los datos que ya tienes en decisiones inteligentes.
+              Dashboards, análisis predictivo e informes automáticos.
+            </p>
+            <ul class="prox-card__features" aria-label="Funcionalidades futuras de Ciencia de Datos">
+              <li>Dashboards interactivos en tiempo real</li>
+              <li>Análisis predictivo de ventas y demanda</li>
+              <li>Detección de anomalías en tus datos</li>
+              <li>Reportes automáticos personalizados</li>
+            </ul>
+          </article>
+
+          <article class="prox-card">
+            <div class="prox-card__icon" aria-hidden="true">🤖</div>
+            <span class="prox-card__label">Año 1 — Q4 / Año 2</span>
+            <h3 class="prox-card__title">Agentes de IA</h3>
+            <p class="prox-card__desc">
+              Asistentes inteligentes que aprenden de tu negocio y actúan de forma autónoma,
+              disponibles las 24 horas.
+            </p>
+            <ul class="prox-card__features" aria-label="Funcionalidades futuras de Agentes de IA">
+              <li>Agente de atención al cliente 24/7</li>
+              <li>Asistente interno para tu equipo</li>
+              <li>Generación de contenido personalizado</li>
+              <li>Automatización conversacional avanzada</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROCESO ===== -->
+    <section class="proceso" id="proceso" aria-labelledby="proceso-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Cómo Funciona</span>
+          <h2 class="section-header__title" id="proceso-title">
+            En marcha en 4 pasos simples
+          </h2>
+          <p class="section-header__desc">
+            No necesitas saber programar. No necesitas un equipo de IT.
+            Solo dinos qué quieres lograr.
+          </p>
+        </div>
+        <div class="proceso-steps">
+          <div class="paso">
+            <div class="paso__num" aria-hidden="true">1</div>
+            <h3 class="paso__title">Cuéntanos tu desafío</h3>
+            <p class="paso__desc">
+              Agenda una llamada gratuita o completa nuestro formulario.
+              Queremos entender tu negocio y tus metas.
+            </p>
+          </div>
+          <div class="paso">
+            <div class="paso__num" aria-hidden="true">2</div>
+            <h3 class="paso__title">Diseñamos tu solución</h3>
+            <p class="paso__desc">
+              Nuestro equipo crea una propuesta a tu medida,
+              sin tecnicismos y con ejemplos concretos.
+            </p>
+          </div>
+          <div class="paso">
+            <div class="paso__num" aria-hidden="true">3</div>
+            <h3 class="paso__title">Implementamos juntos</h3>
+            <p class="paso__desc">
+              Te acompañamos en cada paso. Configuración, pruebas
+              y ajustes hasta que todo funcione perfecto.
+            </p>
+          </div>
+          <div class="paso">
+            <div class="paso__num" aria-hidden="true">4</div>
+            <h3 class="paso__title">Creces con KAKUAA</h3>
+            <p class="paso__desc">
+              Monitoreamos, optimizamos y escalamos tu solución
+              a medida que tu negocio crece.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="cta-final" id="contacto" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 class="cta-final__title" id="cta-title">
+          Tu crecimiento empieza hoy
+        </h2>
+        <p class="cta-final__desc">
+          Seas emprendedor, freelancer, pyme o empresa: KAKUAA tiene
+          algo pensado para ti. Da el primer paso, gratis.
+        </p>
+        <div class="cta-final__actions">
+          <a href="mailto:hola@kakuaa.me" class="btn btn-white-solid btn-lg">
+            Escribinos a hola@kakuaa.me
+          </a>
+          <a href="#planes" class="btn btn-outline-white btn-lg">
+            Explorar Planes
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p class="footer__brand">KAKUAA</p>
+      <p class="footer__tagline">Del Guaraní: &ldquo;Crecimiento y Desarrollo&rdquo;</p>
+      <nav aria-label="Enlaces del pie de página">
+        <ul class="footer__links" role="list">
+          <li><a href="#para-todos">Para Todos</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#casos">Casos de Uso</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="#proximamente">Próximamente</a></li>
+          <li><a href="mailto:hola@kakuaa.me">Contacto</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">&copy; 2025 KAKUAA. Automatización, Ciencia de Datos y Agentes de IA.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar: toggle scrolled state on scroll
+    (function () {
+      var navbar = document.querySelector('.navbar');
+      var THRESHOLD = 60;
+      function updateNavbar() {
+        if (window.scrollY > THRESHOLD) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', updateNavbar, { passive: true });
+      updateNavbar(); // run once on load
+    }());
+
+    // Tab filtering for use cases (progressive enhancement)
+    (function () {
+      var tabs = document.querySelectorAll('.tab-btn');
+      var cards = document.querySelectorAll('.caso-card');
+
+      function filterCards(filter) {
+        cards.forEach(function (card) {
+          var tag = card.querySelector('.caso-card__tag');
+          if (!tag) return;
+          var show = filter === 'all' ||
+            (filter === 'empresa' && tag.classList.contains('tag-empresa')) ||
+            (filter === 'persona' && tag.classList.contains('tag-persona')) ||
+            (filter === 'startup' && tag.classList.contains('tag-startup'));
+          card.style.display = show ? '' : 'none';
+        });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
+          tab.setAttribute('aria-selected', 'true');
+          filterCards(tab.getAttribute('data-filter'));
+        });
+      });
+    }());
+  </script>
+
+</body>
+</html>
